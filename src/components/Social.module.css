@@ -1,0 +1,30 @@
+.social {
+  position: absolute;
+  bottom: 50px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+}
+
+.social li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.2em;
+  transition: 0.3s;
+}
+
+.social li a:hover {
+  color: var(--secondary);
+}
+
+.social li .share {
+  background: var(--secondary);
+  padding: 10px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.social li .share:hover {
+  background: var(--primary);
+}

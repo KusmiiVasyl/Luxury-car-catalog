@@ -1,0 +1,65 @@
+.sideMenuBlock {
+  width: 20%;
+  height: 100%;
+  padding: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 30px;
+  background: var(--bgColor);
+  box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.15),
+    5px 5px 15px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  transition: 1s;
+}
+
+.logo {
+  font-family: "Monserrat";
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  color: #ffffff;
+  font-size: 1.5em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.logo span {
+  text-wrap: nowrap;
+}
+
+.nav {
+  list-style: none;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.nav li {
+  border-radius: 15px;
+}
+
+.nav li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+  display: inline-flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.sideMenuBlock .nav li:hover,
+.sideMenuBlock .nav li:active {
+  box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.sideMenuBlock .social {
+  display: flex;
+  justify-content: center;
+}
