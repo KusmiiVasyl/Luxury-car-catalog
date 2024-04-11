@@ -9,6 +9,7 @@
     5px 5px 15px rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   transition: 1s;
 }
 
@@ -47,6 +48,7 @@
   text-decoration: none;
   color: #ffffff;
   font-size: 1.2em;
+  text-wrap: nowrap;
   letter-spacing: 1px;
   display: inline-flex;
   gap: 10px;
@@ -58,7 +60,20 @@
   box-shadow: var(--boxShadow);
 }
 
-.sideMenuBlock .social {
-  display: flex;
-  justify-content: center;
+/* #region slide menu active */
+.active {
+  width: 7%;
+  align-items: center;
+  overflow: hidden;
+  transition: 1s;
 }
+
+.active .logo span,
+.active .nav li span:nth-child(2){
+  display: none;
+}
+
+.active .nav li a {
+  font-size: 1.5rem;
+}
+/* #endregion */

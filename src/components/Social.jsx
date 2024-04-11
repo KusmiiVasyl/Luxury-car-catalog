@@ -4,10 +4,10 @@ import { IoLogoYoutube } from "react-icons/io5";
 import { FaTwitter } from "react-icons/fa";
 import { MdShare } from "react-icons/md";
 
-const Social = () => {
+const Social = ({ active }) => {
   return (
     <>
-      <ul className={styles.social}>
+      <ul className={styles.social + (active ? " " + styles.active : "")}>
         <li>
           <a href="#" title="Facebook">
             <BsFacebook />

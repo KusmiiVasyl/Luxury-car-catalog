@@ -4,10 +4,10 @@ import { IoBagSharp } from "react-icons/io5";
 import styles from "./Hearder.module.css";
 import userImg from "../images/myFoto.PNG";
 
-const Header = () => {
+const Header = ({toggleActive}) => {
   return (
     <header>
-      <a href="#" className={styles.menu}>
+      <a href="#" className={styles.menu} onClick={toggleActive}>
         <BsSliders />
       </a>
       <div className={styles.userItems}>

@@ -4,9 +4,9 @@ import { TbCategory2 } from "react-icons/tb";
 import { MdOutlineFavoriteBorder, MdOutlineShoppingBag } from "react-icons/md";
 import Social from "./Social";
 
-const SideMenu = () => {
+const SideMenu = ({ active }) => {
   return (
-    <div className={styles.sideMenuBlock}>
+    <div className={styles.sideMenuBlock + (active ? " " + styles.active : "")}>
       <a href="" className={styles.logo}>
         <IoCarSport />
         <span>Luxury car</span>
@@ -45,9 +45,7 @@ const SideMenu = () => {
           </a>
         </li>
       </ul>
-      <div className={styles.social}>
-        <Social />
-      </div>
+      <Social active={active}/>
     </div>
   );
 };
