@@ -3,8 +3,11 @@ import { IoCarSport, IoHomeOutline } from "react-icons/io5";
 import { TbCategory2 } from "react-icons/tb";
 import { MdOutlineFavoriteBorder, MdOutlineShoppingBag } from "react-icons/md";
 import Social from "./Social";
+import { useStore } from "../store";
 
-const SideMenu = ({ active }) => {
+const SideMenu = () => {
+const active = useStore((state) => state.activeHeaderSlideIcon);
+
   return (
     <div className={styles.sideMenuBlock + (active ? " " + styles.active : "")}>
       <a href="" className={styles.logo}>
@@ -45,7 +48,7 @@ const SideMenu = ({ active }) => {
           </a>
         </li>
       </ul>
-      <Social active={active}/>
+      <Social />
     </div>
   );
 };

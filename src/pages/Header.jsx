@@ -3,8 +3,13 @@ import { MdFavorite } from "react-icons/md";
 import { IoBagSharp } from "react-icons/io5";
 import styles from "./Hearder.module.css";
 import userImg from "../images/myFoto.PNG";
+import { useStore } from "../store";
 
-const Header = ({toggleActive}) => {
+const Header = () => {
+  const toggleActive = useStore(
+    (state) => state.handleToggleActiveHeaderSlideIcon
+  );
+
   return (
     <header>
       <a href="#" className={styles.menu} onClick={toggleActive}>
