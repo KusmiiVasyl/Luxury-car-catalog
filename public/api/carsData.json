@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "brand": "LAMBORGHINI",
+    "model": "Huracán Performante Spyder",
+    "year": 2019,
+    "engine": "5.200 V10",
+    "power": "640 HP / 470 kW",
+    "max_peed": "325 km/h",
+    "acceleration_0-100": "2,9 s",
+    "color": "White",
+    "seets": 2,
+    "doors": 2,
+    "consumption":"8,2 - 19,3 l / 100 km",
+    "interior":"Full Optional",
+    "gearbox":"Automatic LDF",
+    "img": "./assets/cars/lamborgini/LAMBORGHINI_Huracán_Performante_Spyder.PNG",
+    "trailer": "https://www.youtube.com/watch?v=BMxK456CliM",
+    "active": true
+  }
+]
