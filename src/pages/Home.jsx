@@ -1,11 +1,11 @@
 import CarsSwiper from "../components/CarsSwiper";
 
-const Home = ({ cars }) => {
+const Home = () => {
   return (
     <section id="home" className="home">
       <div className="containerFluid">
         <div className="row">
-          <CarsSwiper cars={cars} />
+          <CarsSwiper />
         </div>
       </div>
     </section>

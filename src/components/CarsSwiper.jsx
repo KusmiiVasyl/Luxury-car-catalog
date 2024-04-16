@@ -11,7 +11,24 @@ import styles from "./CarsSwiper.module.css";
 // import required modules
 import { EffectCoverflow, Navigation, Autoplay } from "swiper/modules";
 
-const CarsSwiper = ({ cars }) => {
+import { useGetData } from "../store";
+import { useEffect } from "react";
+
+const CarsSwiper = () => {
+  const getData = useGetData();
+
+  useEffect(() => {
+    getData.getCars();
+  }, []);
+
+  if (getData.loading) {
+    return <div className={styles.loading}>Loading ...</div>;
+  }
+
+  if (getData.error) {
+    return <div className={styles.error}>Error: {getData.errorData}</div>;
+  }
+
   return (
     <Swiper
       effect={"coverflow"}
@@ -34,7 +51,7 @@ const CarsSwiper = ({ cars }) => {
       modules={[EffectCoverflow, Navigation, Autoplay]}
       className={styles.carSwiper}
     >
-      {cars.map((car) => (
+      {getData.cars?.map((car) => (
         <SwiperSlide key={car.id}>
           <img src={car.img} alt={car.name} />
         </SwiperSlide>

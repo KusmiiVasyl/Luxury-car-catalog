@@ -17,5 +17,24 @@
     "img": "./assets/cars/lamborgini/LAMBORGHINI_Huracán_Performante_Spyder.PNG",
     "trailer": "https://www.youtube.com/watch?v=BMxK456CliM",
     "active": true
+  },
+  {
+    "id": 2,
+    "brand": "PORSCHE",
+    "model": "911 Carrera 4S Cabriotel",
+    "year": 2022,
+    "engine": "3.000",
+    "power": "331kW/450HP",
+    "max_peed": "306 km/h",
+    "acceleration_0-100": "3.7s",
+    "color": "White",
+    "seets": "2+2",
+    "doors": 2,
+    "consumption":"9.2 - 8.9 l/100km",
+    "interior":"Full Options",
+    "gearbox":"Automatic",
+    "img": "./assets/cars/porsche/PORSCHE_911_Carrera_4S_Cabriotel.PNG",
+    "trailer": "https://www.youtube.com/watch?v=lT2gBozvfDI",
+    "active": false
   }
 ]
