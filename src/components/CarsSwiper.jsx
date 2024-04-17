@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 
-import styles from "./CarsSwiper.module.css";
+import "./CarsSwiper.css";
 
 // import required modules
 import { EffectCoverflow, Navigation, Autoplay } from "swiper/modules";
@@ -20,22 +20,22 @@ import { useGetData } from "../store";
 
 const CarsSwiper = () => {
   const getData = useGetData();
-  const [active, setActive] = useState(false);
-
-  const handleToggleVideo = () => {
-    setActive(!active);
-  };
+  const [active, setActive] = useState(true);
 
   useEffect(() => {
     getData.getCars();
   }, []);
 
+  const handleToggleActive = () => {
+    setActive(!active);
+  };
+
   if (getData.loading) {
-    return <div className={styles.loading}>Loading ...</div>;
+    return <div className="loading">Loading ...</div>;
   }
 
   if (getData.error) {
-    return <div className={styles.error}>Error: {getData.errorData}</div>;
+    return <div className="error">Error: {getData.errorData}</div>;
   }
 
   return (
@@ -58,33 +58,29 @@ const CarsSwiper = () => {
       //   disableOnInteraction: false,
       // }}
       modules={[EffectCoverflow, Navigation, Autoplay]}
-      className={styles.carSwiper}
     >
       {getData.cars?.map((car) => (
-        <SwiperSlide key={car.id}>
+        <SwiperSlide key={car.id} className="carSwiper">
           <div className="carSlider">
             <img src={car.img} alt={car.name} />
             <div className="content">
               <h2>{car.brand}</h2>
               <h3>{car.model}</h3>
-              <div className={styles.btns}>
-                <a href="#" className={styles.btnCarDetail}>
+              <div className="btns">
+                <a href="#" className="btnCarDetail">
                   More Details
                 </a>
                 <a
                   href="#"
-                  className={styles.btnCarTrailer}
-                  onClick={handleToggleVideo}
+                  className={`btnCarTrailer ${active ? "active" : ""}`}
+                  onClick={handleToggleActive}
                 >
-                  {active ? (
-                    <span className={styles.pause}>
-                      <FaPause />
-                    </span>
-                  ) : (
-                    <span className={styles.play}>
-                      <FaPlay />
-                    </span>
-                  )}
+                  <span className="pause">
+                    <FaPause />
+                  </span>
+                  <span className="play">
+                    <FaPlay />
+                  </span>
                 </a>
               </div>
             </div>
