@@ -20,7 +20,7 @@ import { useGetData } from "../store";
 
 const CarsSwiper = () => {
   const getData = useGetData();
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     getData.getCars();
