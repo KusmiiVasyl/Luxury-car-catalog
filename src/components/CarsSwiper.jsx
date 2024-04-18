@@ -63,6 +63,16 @@ const CarsSwiper = () => {
         <SwiperSlide key={car.id} className="carSwiper">
           <div className="carSlider">
             <img src={car.img} alt={car.name} />
+            <div className={`video ${active ? "active" : ""}`}>
+              <iframe
+                src={car.trailer}
+                width="1280"
+                height="720"
+                title={`${car.brand} ${car.model}`}
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+                allowFullScreen
+              ></iframe>
+            </div>
             <div className="content">
               <h2>{car.brand}</h2>
               <h3>{car.model}</h3>

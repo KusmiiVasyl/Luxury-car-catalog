@@ -15,7 +15,7 @@
     "interior": "Full Optional",
     "gearbox": "Automatic LDF",
     "img": "./assets/cars/lamborgini/LAMBORGHINI_Huracán_Performante_Spyder.PNG",
-    "trailer": "https://www.youtube.com/watch?v=BMxK456CliM",
+    "trailer": "https://www.youtube.com/embed/BMxK456CliM",
     "active": "true"
   },
   {
@@ -34,7 +34,7 @@
     "interior": "Full Options",
     "gearbox": "Automatic",
     "img": "./assets/cars/porsche/PORSCHE_911_Carrera_4S_Cabriotel.PNG",
-    "trailer": "https://www.youtube.com/watch?v=lT2gBozvfDI",
+    "trailer": "https://www.youtube.com/embed/lT2gBozvfDI",
     "active": "false"
   },
   {
@@ -53,7 +53,7 @@
     "interior": "Full Options",
     "gearbox": "Automatic",
     "img": "./assets/cars/FERRARI/FERRARI_Portofino_Spyder.PNG",
-    "trailer": "https://www.youtube.com/watch?v=F27-wfOsCQ8&list=TLGGzRd31wSxxsYxNzA0MjAyNA",
+    "trailer": "https://www.youtube.com/embed/F27-wfOsCQ8&list=TLGGzRd31wSxxsYxNzA0MjAyNA",
     "active": "false"
   },
   {
@@ -72,7 +72,7 @@
     "interior": "Full Options",
     "gearbox": "Automatic",
     "img": "./assets/cars/LAND_ROVER/LAND_ROVER_Range_Rover_Sport_HSE_2023.PNG",
-    "trailer": "https://www.youtube.com/watch?v=PwyHsRneBZM&list=TLGGu8Qzv7qXSAgxNzA0MjAyNA",
+    "trailer": "https://www.youtube.com/embed/PwyHsRneBZM&list=TLGGu8Qzv7qXSAgxNzA0MjAyNA",
     "active": "false"
   },
   {
@@ -91,7 +91,7 @@
     "interior": "Full Options",
     "gearbox": "Automatic",
     "img": "./assets/cars/porsche/PORSCHE_Cayenne_EHybrid.PNG",
-    "trailer": "https://www.youtube.com/watch?v=vCIZLain92A",
+    "trailer": "https://www.youtube.com/embed/vCIZLain92A",
     "active": "false"
   },
   {
@@ -110,7 +110,7 @@
     "interior": "Full Options",
     "gearbox": "Automatic Tiptronic",
     "img": "./assets/cars/AUDI/AUDI_RS6_Avant_25th_Anniversary.PNG",
-    "trailer": "https://www.youtube.com/watch?v=XRykT_s-UMU",
+    "trailer": "https://www.youtube.com/embed/XRykT_s-UMU",
     "active": "false"
   }
 ]
