@@ -1,4 +1,4 @@
-import CarsSwiper from "../components/CarsSwiper";
+import CarSwiper from "../components/CarSwiper";
 import styles from "./Home.module.css";
 
 const Home = () => {
@@ -6,7 +6,7 @@ const Home = () => {
     <section id="home" className={styles.active}>
       <div>
         <div>
-          <CarsSwiper />
+          <CarSwiper />
         </div>
       </div>
     </section>

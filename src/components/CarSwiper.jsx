@@ -8,17 +8,15 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 
-import "./CarsSwiper.css";
+import "./CarSwiper.css";
 
 // import required modules
 import { EffectCoverflow, Navigation, Autoplay } from "swiper/modules";
 
-// import icon
-import { FaPause, FaPlay } from "react-icons/fa6";
-
 import { useGetData } from "../store";
+import CarSlider from "./CarSlider";
 
-const CarsSwiper = () => {
+const CarSwiper = () => {
   const getData = useGetData();
   const [active, setActive] = useState(false);
 
@@ -61,44 +59,15 @@ const CarsSwiper = () => {
     >
       {getData.cars?.map((car) => (
         <SwiperSlide key={car.id} className="carSwiper">
-          <div className="carSlider">
-            <img src={car.img} alt={car.name} />
-            <div className={`video ${active ? "active" : ""}`}>
-              <iframe
-                src={car.trailer}
-                width="1280"
-                height="720"
-                title={`${car.brand} ${car.model}`}
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="content">
-              <h2>{car.brand}</h2>
-              <h3>{car.model}</h3>
-              <div className="btns">
-                <a href="#" className="btnCarDetail">
-                  More Details
-                </a>
-                <a
-                  href="#"
-                  className={`btnCarTrailer ${active ? "active" : ""}`}
-                  onClick={handleToggleActive}
-                >
-                  <span className="pause">
-                    <FaPause />
-                  </span>
-                  <span className="play">
-                    <FaPlay />
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
+          <CarSlider
+            car={car}
+            active={active}
+            toggleVideo={handleToggleActive}
+          />
         </SwiperSlide>
       ))}
     </Swiper>
   );
 };
 
-export default CarsSwiper;
+export default CarSwiper;
