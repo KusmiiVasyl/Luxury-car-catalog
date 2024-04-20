@@ -3,6 +3,7 @@ import CarSwiper from "../components/CarSwiper";
 import { useGetData } from "../store";
 import styles from "./Home.module.css";
 import { FaArrowRightLong } from "react-icons/fa6";
+import CarCard from "../components/CarCard";
 
 const Home = () => {
   const getData = useGetData();
@@ -39,7 +40,11 @@ const Home = () => {
           </a>
         </div>
       </div>
-      <div className="row"></div>
+      <div className="row">
+        {getData.cars.map((car) => (
+          <CarCard key={car.id} car={car} />
+        ))}
+      </div>
     </section>
   );
 };
