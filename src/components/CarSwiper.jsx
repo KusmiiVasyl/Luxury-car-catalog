@@ -1,40 +1,18 @@
-import { useEffect, useState } from "react";
-
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
-
 import "./CarSwiper.css";
-
-// import required modules
 import { EffectCoverflow, Navigation, Autoplay } from "swiper/modules";
-
-import { useGetData } from "../store";
 import CarSlider from "./CarSlider";
+import { useState } from "react";
 
-const CarSwiper = () => {
-  const getData = useGetData();
+const CarSwiper = ({ cars }) => {
   const [active, setActive] = useState(false);
-
-  useEffect(() => {
-    getData.getCars();
-  }, []);
 
   const handleToggleActive = () => {
     setActive(!active);
   };
-
-  if (getData.loading) {
-    return <div className="loading">Loading ...</div>;
-  }
-
-  if (getData.error) {
-    return <div className="error">Error: {getData.errorData}</div>;
-  }
 
   return (
     <Swiper
@@ -57,7 +35,7 @@ const CarSwiper = () => {
       // }}
       modules={[EffectCoverflow, Navigation, Autoplay]}
     >
-      {getData.cars?.map((car) => (
+      {cars?.map((car) => (
         <SwiperSlide key={car.id} className="carSwiper">
           <CarSlider
             car={car}
