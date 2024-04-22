@@ -27,7 +27,7 @@ const Home = () => {
           <CarSwiper cars={getData.cars} />
         </div>
       </div>
-      <div className="row">
+      <div className="row mt-2 mb-4">
         <div className="col-lg-6">
           <h2 className={styles.sectionTitle}>Rent cars on promotion</h2>
         </div>
