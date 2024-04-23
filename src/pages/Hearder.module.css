@@ -37,7 +37,7 @@ header {
 }
 
 .userItems .icon .favorite,
-.userItems .icon .bag {
+.userItems .icon .garage {
   position: absolute;
   right: 0;
   bottom: 10px;

@@ -36,7 +36,7 @@ const active = useStore((state) => state.activeHeaderSlideIcon);
             <span>
               <MdOutlineFavoriteBorder />
             </span>
-            <span>My Library</span>
+            <span>My Favorites</span>
           </a>
         </li>
         <li>
@@ -44,7 +44,7 @@ const active = useStore((state) => state.activeHeaderSlideIcon);
             <span>
               <MdOutlineShoppingBag />
             </span>
-            <span>My Bag</span>
+            <span>My Garage</span>
           </a>
         </li>
       </ul>
