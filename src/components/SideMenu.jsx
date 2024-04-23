@@ -1,52 +1,45 @@
 import styles from "./SideMenu.module.css";
-import { IoCarSport, IoHomeOutline } from "react-icons/io5";
-import { TbCategory2 } from "react-icons/tb";
-import { MdOutlineFavoriteBorder, MdOutlineShoppingBag } from "react-icons/md";
+import { IoCarSport } from "react-icons/io5";
 import Social from "./Social";
 import { useStore } from "../store";
+import NavItemMenu from "./NavItemMenu";
+import { navItemsList } from "../data/navItemsList";
+import { useState } from "react";
 
 const SideMenu = () => {
-const active = useStore((state) => state.activeHeaderSlideIcon);
+  const isExpandSideMenu = useStore((state) => state.activeHeaderSlideIcon);
+  const [navItems, setNavItems] = useState(navItemsList);
+
+  const handleNavItemOnClick = (id) => {
+    setNavItems(
+      navItems.map((item) => {
+        if (item.id === id) {
+          return { ...item, active: true };
+        } else {
+          return { ...item, active: false };
+        }
+      })
+    );
+  };
 
   return (
-    <div className={styles.sideMenuBlock + (active ? " " + styles.active : "")}>
+    <div
+      className={
+        styles.sideMenuBlock + (isExpandSideMenu ? " " + styles.active : "")
+      }
+    >
       <a href="" className={styles.logo}>
         <IoCarSport />
         <span>Luxury car</span>
       </a>
       <ul className={styles.nav}>
-        <li>
-          <a href="#">
-            <span>
-              <IoHomeOutline />
-            </span>
-            <span>Home</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span>
-              <TbCategory2 />
-            </span>
-            <span>Categories</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span>
-              <MdOutlineFavoriteBorder />
-            </span>
-            <span>My Favorites</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span>
-              <MdOutlineShoppingBag />
-            </span>
-            <span>My Garage</span>
-          </a>
-        </li>
+        {navItems.map((item) => (
+          <NavItemMenu
+            key={item.id}
+            item={item}
+            navOnClick={handleNavItemOnClick}
+          />
+        ))}
       </ul>
       <Social />
     </div>

@@ -40,6 +40,14 @@
   gap: 15px;
 }
 
+.nav {
+  list-style: none;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .nav li {
   border-radius: 15px;
 }
@@ -55,8 +63,7 @@
   padding: 10px;
 }
 
-.sideMenuBlock .nav li:hover,
-.sideMenuBlock .nav li:active {
+.nav li:hover {
   box-shadow: var(--boxShadow);
 }
 
@@ -69,7 +76,7 @@
 }
 
 .active .logo span,
-.active .nav li span:nth-child(2){
+.active .nav li span:nth-child(2) {
   display: none;
 }
 

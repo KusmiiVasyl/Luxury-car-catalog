@@ -41,7 +41,7 @@ const Home = () => {
         </div>
       </div>
       <div className="row">
-        {getData.cars.map((car) => (
+        {getData.cars.slice(0,4).map((car) => (
           <CarCard key={car.id} car={car} />
         ))}
       </div>
