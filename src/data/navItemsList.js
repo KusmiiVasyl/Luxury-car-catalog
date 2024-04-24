@@ -1,5 +1,5 @@
 export const navItemsList = [
-  { id: 1, name: "Home", path: "home", icon: "bi bi-house", active: true },
+  { id: 1, name: "Home", path: ".", icon: "bi bi-house", active: true },
   {
     id: 2,
     name: "Categories",

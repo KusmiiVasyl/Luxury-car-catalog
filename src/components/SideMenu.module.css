@@ -48,11 +48,11 @@
   gap: 15px;
 }
 
-.nav li {
+.nav a {
   border-radius: 15px;
 }
 
-.nav li a {
+.nav a {
   text-decoration: none;
   color: #ffffff;
   font-size: 1.2em;
@@ -63,7 +63,7 @@
   padding: 10px;
 }
 
-.nav li:hover {
+.nav a:hover {
   box-shadow: var(--boxShadow);
 }
 
@@ -76,11 +76,11 @@
 }
 
 .active .logo span,
-.active .nav li span:nth-child(2) {
+.active .nav a span:nth-child(2) {
   display: none;
 }
 
-.active .nav li a {
+.active .nav a {
   font-size: 1.5rem;
 }
 /* #endregion */

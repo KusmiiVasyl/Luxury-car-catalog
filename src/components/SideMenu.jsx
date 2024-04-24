@@ -32,7 +32,7 @@ const SideMenu = () => {
         <IoCarSport />
         <span>Luxury car</span>
       </a>
-      <ul className={styles.nav}>
+      <nav className={styles.nav}>
         {navItems.map((item) => (
           <NavItemMenu
             key={item.id}
@@ -40,7 +40,7 @@ const SideMenu = () => {
             navOnClick={handleNavItemOnClick}
           />
         ))}
-      </ul>
+      </nav>
       <Social />
     </div>
   );

@@ -1,9 +1,8 @@
-
 import SideMenu from "../components/SideMenu";
 import Header from "./Header";
 import styles from "./MainHub.module.css";
 import { useStore } from "../store";
-import Home from "./Home";
+import { Outlet } from "react-router-dom";
 
 const MainHub = () => {
   const active = useStore((state) => state.activeHeaderSlideIcon);
@@ -13,7 +12,7 @@ const MainHub = () => {
       <SideMenu active={active} />
       <div className={styles.banner + (active ? " " + styles.active : "")}>
         <Header />
-        <Home />
+        <Outlet />
       </div>
     </div>
   );
