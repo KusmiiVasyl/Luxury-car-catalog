@@ -10,7 +10,7 @@ const MainHub = () => {
   return (
     <div className={styles.mainBlock}>
       <SideMenu active={active} />
-      <div className={styles.banner + (active ? " " + styles.active : "")}>
+      <div className={styles.banner + (active ? " " + styles.active : "") }>
         <Header />
         <Outlet />
       </div>

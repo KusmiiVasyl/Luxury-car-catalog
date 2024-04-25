@@ -21,7 +21,7 @@ const Home = () => {
   }
 
   return (
-    <section id="home" className={styles.active}>
+    <section id="home">
       <div className="container-fluid">
         <div className="row">
           <CarSwiper cars={getData.cars} />

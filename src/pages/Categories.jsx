@@ -2,7 +2,7 @@ import styles from "./Categories.module.css";
 
 const Categories = () => {
   return (
-    <section id="categories" className="categories">
+    <section id="categories">
       <h1>Categories</h1>
     </section>
   );
