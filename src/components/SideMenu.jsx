@@ -4,23 +4,9 @@ import Social from "./Social";
 import { useStore } from "../store";
 import NavItemMenu from "./NavItemMenu";
 import { navItemsList } from "../data/navItemsList";
-import { useState } from "react";
 
 const SideMenu = () => {
   const isExpandSideMenu = useStore((state) => state.activeHeaderSlideIcon);
-  const [navItems, setNavItems] = useState(navItemsList);
-
-  const handleNavItemOnClick = (id) => {
-    setNavItems(
-      navItems.map((item) => {
-        if (item.id === id) {
-          return { ...item, active: true };
-        } else {
-          return { ...item, active: false };
-        }
-      })
-    );
-  };
 
   return (
     <div
@@ -33,11 +19,10 @@ const SideMenu = () => {
         <span>Luxury car</span>
       </a>
       <nav className={styles.nav}>
-        {navItems.map((item) => (
+        {navItemsList.map((item) => (
           <NavItemMenu
             key={item.id}
             item={item}
-            navOnClick={handleNavItemOnClick}
           />
         ))}
       </nav>

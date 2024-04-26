@@ -16,7 +16,7 @@ const initialState = {
   success: false,
   error: false,
   cars: [],
-  filterItems: [{ id: 1, name: "All", active: true }],
+  filterOptions: [{ id: 1, value: "all", label: "ALL" }],
   errorData: null,
 };
 
@@ -30,9 +30,9 @@ export const useGetData = create((set, get) => ({
       if (res.status === 200) {
         set({ ...initialState, cars: res.data, success: true, loading: false });
         set({
-          filterItems: [
-            ...get().filterItems,
-            ...handleCarsFIlterItems(res.data, get().filterItems),
+          filterOptions: [
+            ...get().filterOptions,
+            ...handleCarsFIlterItems(res.data, get().filterOptions),
           ],
         });
       }
@@ -47,12 +47,13 @@ export const useGetData = create((set, get) => ({
   },
 }));
 
-const handleCarsFIlterItems = (cars, filterItems) => {
-  const carBrands = new Set(cars.map((car) => car.brand.toUpperCase()));
-  const newFilterItems = [...carBrands].map((brand, index) => ({
-    id: filterItems.length + index + 1,
-    name: brand,
-    active: false,
+const handleCarsFIlterItems = (cars, filterOptions) => {
+  const carBrands = [...new Set(cars.map((car) => car.brand))];
+  carBrands.sort((a,b)=>a.localeCompare(b));
+  const newFilterItems = carBrands.map((brand, index) => ({
+    id: filterOptions.length + index + 1,
+    value: brand.toLowerCase(),
+    label: brand.toUpperCase(),
   }));
   return newFilterItems;
 };

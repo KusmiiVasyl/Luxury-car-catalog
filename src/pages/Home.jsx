@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import CarSwiper from "../components/CarSwiper";
 import { useGetData } from "../store";
 import styles from "./Home.module.css";
@@ -7,10 +6,6 @@ import CarCard from "../components/CarCard";
 
 const Home = () => {
   const getData = useGetData();
-
-  useEffect(() => {
-    getData.getCars();
-  }, []);
 
   if (getData.loading) {
     return <div className="loading">Loading ...</div>;

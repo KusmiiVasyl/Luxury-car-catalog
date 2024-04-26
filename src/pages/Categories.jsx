@@ -1,15 +1,27 @@
 import styles from "./Categories.module.css";
 import { useGetData } from "../store";
+import { useState } from "react";
 
 const Categories = () => {
-  const carsFilterItems = useGetData((state) => state.filterItems);
+  const carsfilterOptions = useGetData((state) => state.filterOptions);
+  const [filterOption, setFilterOption] = useState(carsfilterOptions[0].value);
+ 
+  const handleChange = (e) => {
+    setFilterOption(e.target.value);
+  };
 
   return (
     <section id="categories">
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-8">
-            <ul className={styles.filters}></ul>
+            <select className={styles.filters} onChange={handleChange}>
+              {carsfilterOptions.map((option) => (
+                <option key={option.id} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="col-lg-4"></div>
         </div>

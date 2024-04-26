@@ -1,12 +1,11 @@
 import { NavLink } from "react-router-dom";
 import styles from "./NavItemMenu.module.css";
 
-const NavItemMenu = ({ item, navOnClick }) => {
+const NavItemMenu = ({ item }) => {
   return (
     <NavLink
-      className={item.active ? styles.active : ""}
+      className={({isActive}) => (isActive ? styles.active : "")}
       to={item.path}
-      onClick={() => navOnClick(item.id)}
       title={item.name}
     >
       <span>
