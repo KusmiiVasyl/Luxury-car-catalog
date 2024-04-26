@@ -16,10 +16,11 @@ const initialState = {
   success: false,
   error: false,
   cars: [],
+  filterItems: [{ id: 1, name: "All", active: true }],
   errorData: null,
 };
 
-export const useGetData = create((set) => ({
+export const useGetData = create((set, get) => ({
   ...initialState,
 
   getCars: async () => {
@@ -28,6 +29,12 @@ export const useGetData = create((set) => ({
       const res = await axios.get(URL.CARS);
       if (res.status === 200) {
         set({ ...initialState, cars: res.data, success: true, loading: false });
+        set({
+          filterItems: [
+            ...get().filterItems,
+            ...handleCarsFIlterItems(res.data, get().filterItems),
+          ],
+        });
       }
     } catch (error) {
       set({
@@ -39,3 +46,13 @@ export const useGetData = create((set) => ({
     }
   },
 }));
+
+const handleCarsFIlterItems = (cars, filterItems) => {
+  const carBrands = new Set(cars.map((car) => car.brand.toUpperCase()));
+  const newFilterItems = [...carBrands].map((brand, index) => ({
+    id: filterItems.length + index + 1,
+    name: brand,
+    active: false,
+  }));
+  return newFilterItems;
+};
