@@ -1,17 +1,19 @@
-import styles from "./Categories.module.css";
+import styles from "./Brands.module.css";
 import { useGetData } from "../store";
 import { useState } from "react";
+import CarCard from "../components/CarCard";
 
-const Categories = () => {
+const Brands = () => {
   const carsfilterOptions = useGetData((state) => state.filterOptions);
   const [filterOption, setFilterOption] = useState(carsfilterOptions[0].value);
+  const [cars] = useState(useGetData((state) => state.cars));
 
   const handleChange = (e) => {
     setFilterOption(e.target.value);
   };
 
   return (
-    <section id="categories">
+    <section id="brands">
       <div className="container-fluid">
         <div className="row">
           <div className="col d-flex justify-content-start align-items-center">
@@ -30,9 +32,16 @@ const Categories = () => {
             </div>
           </div>
         </div>
+        <div className="row">
+          {filterOption === carsfilterOptions[0].value
+            ? cars.map((car) => <CarCard key={car.id} car={car} />)
+            : cars
+                .filter((car) => car.brand === filterOption)
+                .map((car) => <CarCard key={car.id} car={car} />)}
+        </div>
       </div>
     </section>
   );
 };
 
-export default Categories;
+export default Brands;

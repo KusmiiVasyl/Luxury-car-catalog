@@ -16,7 +16,7 @@ const initialState = {
   success: false,
   error: false,
   cars: [],
-  filterOptions: [{ id: 1, value: "all", label: "ALL" }],
+  filterOptions: [{ id: 1, value: "ALL", label: "ALL" }],
   errorData: null,
 };
 
@@ -52,7 +52,7 @@ const handleCarsFIlterItems = (cars, filterOptions) => {
   carBrands.sort((a,b)=>a.localeCompare(b));
   const newFilterItems = carBrands.map((brand, index) => ({
     id: filterOptions.length + index + 1,
-    value: brand.toLowerCase(),
+    value: brand.toUpperCase(),
     label: brand.toUpperCase(),
   }));
   return newFilterItems;

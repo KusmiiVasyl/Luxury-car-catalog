@@ -2,8 +2,8 @@ export const navItemsList = [
   { id: 1, name: "Home", path: ".", icon: "bi bi-house", active: true },
   {
     id: 2,
-    name: "Categories",
-    path: "categories",
+    name: "Brands",
+    path: "brands",
     icon: "bi bi-grid",
     active: false,
   },
