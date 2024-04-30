@@ -2,7 +2,25 @@ import styles from "./CarCard.module.css";
 import { FaHeart } from "react-icons/fa6";
 import { GrAddCircle } from "react-icons/gr";
 
-const CarCard = ({ car }) => {
+const CarCard = ({ car, searchText }) => {
+  const highlightMatch = (text) => {
+    if (!searchText) {
+      return text;
+    }
+    console.log(searchText);
+    const regex = new RegExp(`(${searchText})`, "gi");
+    return text.split(regex).map((substring, index) => {
+      if (substring.toLowerCase() === searchText.toLowerCase()) {
+        return (
+          <span key={index} className={styles.highlight}>
+            {substring}
+          </span>
+        );
+      }
+      return substring;
+    });
+  };
+
   return (
     <div className="col-xl-3 col-lg-4 col-md-6">
       <div className={styles.carCard}>
@@ -15,8 +33,8 @@ const CarCard = ({ car }) => {
           <FaHeart />
         </a>
         <div className={styles.carDetails}>
-          <div className={styles.carBrand}>{car.brand}</div>
-          <div className={styles.carModel}>{car.model}</div>
+          <div className={styles.carBrand}>{highlightMatch(car.brand)}</div>
+          <div className={styles.carModel}>{highlightMatch(car.model)}</div>
           <div className="d-flex justify-content-center">
             <hr className="w-75  text-light" />
           </div>

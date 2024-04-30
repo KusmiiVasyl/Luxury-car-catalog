@@ -1,15 +1,44 @@
 import styles from "./Brands.module.css";
 import { useGetData } from "../store";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CarCard from "../components/CarCard";
 
 const Brands = () => {
   const carsfilterOptions = useGetData((state) => state.filterOptions);
+  const getData = useGetData();
   const [filterOption, setFilterOption] = useState(carsfilterOptions[0].value);
-  const [cars] = useState(useGetData((state) => state.cars));
+  const [searchText, setSearchText] = useState("");
 
-  const handleChange = (e) => {
+  useEffect(() => {
+    getData.getCars();
+  }, []);
+
+  const handleFilterChange = (e) => {
     setFilterOption(e.target.value);
+  };
+
+  const handleSearch = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  const showCarCards = () => {
+    if (searchText) {
+      return getData.cars
+        .filter(
+          (car) =>
+            car.brand.toLowerCase().includes(searchText.toLowerCase().trim()) ||
+            car.model.toLowerCase().includes(searchText.toLowerCase().trim())
+        )
+        .map((car) => (
+          <CarCard key={car.id} car={car} searchText={searchText} />
+        ));
+    }
+
+    return filterOption === carsfilterOptions[0].value
+      ? getData.cars.map((car) => <CarCard key={car.id} car={car} />)
+      : getData.cars
+          .filter((car) => car.brand === filterOption)
+          .map((car) => <CarCard key={car.id} car={car} />);
   };
 
   return (
@@ -17,7 +46,11 @@ const Brands = () => {
       <div className="container-fluid">
         <div className="row">
           <div className="col d-flex justify-content-start align-items-center">
-            <select className={styles.filters} onChange={handleChange}>
+            <select
+              className={styles.filters}
+              onChange={handleFilterChange}
+              onClick={() => setSearchText("")}
+            >
               {carsfilterOptions.map((option) => (
                 <option key={option.id} value={option.value}>
                   {option.label}
@@ -26,19 +59,19 @@ const Brands = () => {
             </select>
           </div>
           <div className="col d-flex align-items-center justify-content-lg-end justify-content-sm-start">
-            <div className={styles.search}>
+            <div className={styles.search} title="Search by brand or model">
               <i className="bi bi-search"></i>
-              <input type="text" name="search" placeholder="Search" />
+              <input
+                type="text"
+                name="search"
+                value={searchText}
+                placeholder="Search"
+                onChange={handleSearch}
+              />
             </div>
           </div>
         </div>
-        <div className="row">
-          {filterOption === carsfilterOptions[0].value
-            ? cars.map((car) => <CarCard key={car.id} car={car} />)
-            : cars
-                .filter((car) => car.brand === filterOption)
-                .map((car) => <CarCard key={car.id} car={car} />)}
-        </div>
+        <div className="row">{showCarCards()}</div>
       </div>
     </section>
   );
