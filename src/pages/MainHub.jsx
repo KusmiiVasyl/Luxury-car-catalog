@@ -18,7 +18,8 @@ const MainHub = () => {
       <SideMenu active={active} />
       <div className={styles.banner + (active ? " " + styles.active : "")}>
         <Header />
-        <Outlet />
+        {getData.cars && getData.cars.length > 0 && <Outlet />}
+        {/* TODO Loading & Error page */}
       </div>
     </div>
   );

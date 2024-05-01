@@ -39,6 +39,7 @@
   padding: 5px;
   border-radius: 0 0 0 20px;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .carCard .addToGarage {
@@ -50,7 +51,7 @@
 }
 
 .carCard .like.active {
-  color: var(--secondary);
+  color: #ec1d1d;
 }
 /* #endregion */
 

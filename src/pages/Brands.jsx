@@ -1,17 +1,13 @@
 import styles from "./Brands.module.css";
 import { useGetData } from "../store";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CarCard from "../components/CarCard";
 
 const Brands = () => {
   const carsfilterOptions = useGetData((state) => state.filterOptions);
-  const getData = useGetData();
+  const cars = useGetData((state) => state.cars);
   const [filterOption, setFilterOption] = useState(carsfilterOptions[0].value);
   const [searchText, setSearchText] = useState("");
-
-  useEffect(() => {
-    getData.getCars();
-  }, []);
 
   const handleFilterChange = (e) => {
     setFilterOption(e.target.value);
@@ -23,7 +19,7 @@ const Brands = () => {
 
   const showCarCards = () => {
     if (searchText) {
-      return getData.cars
+      return cars
         .filter(
           (car) =>
             car.brand.toLowerCase().includes(searchText.toLowerCase().trim()) ||
@@ -35,8 +31,8 @@ const Brands = () => {
     }
 
     return filterOption === carsfilterOptions[0].value
-      ? getData.cars.map((car) => <CarCard key={car.id} car={car} />)
-      : getData.cars
+      ? cars.map((car) => <CarCard key={car.id} car={car} />)
+      : cars
           .filter((car) => car.brand === filterOption)
           .map((car) => <CarCard key={car.id} car={car} />);
   };

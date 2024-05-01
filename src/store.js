@@ -8,6 +8,19 @@ export const useStore = create((set) => ({
     set((state) => ({
       activeHeaderSlideIcon: !state.activeHeaderSlideIcon,
     })),
+  favoriteCars: [],
+  addCarToFavorites: (car) => {
+    set((state) => ({ favoriteCars: [...state.favoriteCars, car] }));
+  },
+  removeCarFromFavorites: (id) => {
+    set((state) => ({
+      favoriteCars: state.favoriteCars.filter((car) => car.id !== id),
+    }));
+  },
+  carsInGarage: [],
+  addCarToGarage: (car) => {
+    set((state) => ({ carsInGarage: [...state.carsInGarage, car] }));
+  },
 }));
 
 // get data from api
@@ -49,7 +62,7 @@ export const useGetData = create((set, get) => ({
 
 const handleCarsFIlterItems = (cars, filterOptions) => {
   const carBrands = [...new Set(cars.map((car) => car.brand))];
-  carBrands.sort((a,b)=>a.localeCompare(b));
+  carBrands.sort((a, b) => a.localeCompare(b));
   const newFilterItems = carBrands.map((brand, index) => ({
     id: filterOptions.length + index + 1,
     value: brand.toUpperCase(),

@@ -1,9 +1,24 @@
+import { useStore } from "../store";
 import styles from "./MyFavorites.module.css";
+import CarCard from "../components/CarCard";
 
 const MyFavorites = () => {
+  const favoriteCars = useStore((state) => state.favoriteCars);
+
   return (
     <section id="myFavorites" className="myFavorites">
-      <h1>My Favorites</h1>
+      <div className="fluid-container">
+        <div className="row mt-3 mb-5">
+          <h1>My Favorite Cars</h1>
+        </div>
+        <div className="row">
+          {favoriteCars.length > 0 ? (
+            favoriteCars.map((car) => <CarCard key={car.id} car={car} />)
+          ) : (
+            <h2>No favorite cars</h2>
+          )}
+        </div>
+      </div>
     </section>
   );
 };

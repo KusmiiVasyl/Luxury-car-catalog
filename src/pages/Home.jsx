@@ -7,14 +7,6 @@ import CarCard from "../components/CarCard";
 const Home = () => {
   const getData = useGetData();
 
-  if (getData.loading) {
-    return <div className="loading">Loading ...</div>;
-  }
-
-  if (getData.error) {
-    return <div className="error">Error: {getData.errorData}</div>;
-  }
-
   return (
     <section id="home">
       <div className="container-fluid">

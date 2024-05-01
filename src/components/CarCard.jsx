@@ -1,13 +1,19 @@
 import styles from "./CarCard.module.css";
 import { FaHeart } from "react-icons/fa6";
 import { GrAddCircle } from "react-icons/gr";
+import { useStore } from "../store";
 
 const CarCard = ({ car, searchText }) => {
+  const favoriteCars = useStore((state) => state.favoriteCars);
+  const addCarToFavorites = useStore((state) => state.addCarToFavorites);
+  const removeCarFromFavorites = useStore(
+    (state) => state.removeCarFromFavorites
+  );
+
   const highlightMatch = (text) => {
     if (!searchText) {
       return text;
     }
-    console.log(searchText);
     const regex = new RegExp(`(${searchText})`, "gi");
     return text.split(regex).map((substring, index) => {
       if (substring.toLowerCase() === searchText.toLowerCase()) {
@@ -21,6 +27,12 @@ const CarCard = ({ car, searchText }) => {
     });
   };
 
+  const handleFavorite = (car) => {
+    favoriteCars.includes(car)
+      ? removeCarFromFavorites(car.id)
+      : addCarToFavorites(car);
+  };
+
   return (
     <div className="col-xl-3 col-lg-4 col-md-6">
       <div className={styles.carCard}>
@@ -29,9 +41,15 @@ const CarCard = ({ car, searchText }) => {
           alt={`${car.brand} ${car.model}`}
           className="img-fluid"
         />
-        <a href="#" className={styles.like} title="Add to favorite">
+        <div
+          className={`${styles.like} ${favoriteCars.includes(car) ? styles.active : ""}`}
+          title="Add to favorite"
+          onClick={() => {
+            handleFavorite(car);
+          }}
+        >
           <FaHeart />
-        </a>
+        </div>
         <div className={styles.carDetails}>
           <div className={styles.carBrand}>{highlightMatch(car.brand)}</div>
           <div className={styles.carModel}>{highlightMatch(car.model)}</div>
