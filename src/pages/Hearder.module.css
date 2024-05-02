@@ -1,8 +1,7 @@
-
-
 .menu {
   font-size: 1.8rem;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .userItems {

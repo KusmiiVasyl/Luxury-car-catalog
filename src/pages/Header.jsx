@@ -9,28 +9,30 @@ const Header = () => {
   const toggleActive = useStore(
     (state) => state.handleToggleActiveHeaderSlideIcon
   );
+  const countFavoriteCars = useStore((state) => state.favoriteCars.length);
+  const countCarsInGarage = useStore((state) => state.carsInGarage.length);
 
   return (
     <header>
-      <a href="#" className={styles.menu} onClick={toggleActive}>
+      <div className={styles.menu} onClick={toggleActive}>
         <BsSliders />
-      </a>
+      </div>
       <div className={styles.userItems}>
-        <a href="#" className={styles.icon}>
+        <div className={styles.icon}>
           <MdFavorite />
-          <span className={styles.favorite}>0</span>
-        </a>
-        <a href="#" className={styles.icon}>
+          <span className={styles.favorite}>{countFavoriteCars}</span>
+        </div>
+        <div className={styles.icon}>
           <PiGarageFill />
-          <span className={styles.garage}>0</span>
-        </a>
+          <span className={styles.garage}>{countCarsInGarage}</span>
+        </div>
         <div className={styles.avatar}>
-          <a href="#">
+          <div>
             <img src={userImg} alt="User Image" />
-          </a>
+          </div>
           <div className={styles.user}>
             <span>User Name</span>
-            <a href="#">View profile</a>
+            <span>View profile</span>
           </div>
         </div>
       </div>
