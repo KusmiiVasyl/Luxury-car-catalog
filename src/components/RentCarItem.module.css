@@ -1,0 +1,21 @@
+.rentCarItem {
+  margin-bottom: 20px;
+}
+
+.rentCarItem tr {
+  margin-bottom: 20px !important;
+}
+
+.rentCarItem :is(td, th) {
+  background: transparent;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.rentCarItem img {
+  width: 120px;
+  height: 70px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
+}

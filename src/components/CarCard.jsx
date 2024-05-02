@@ -9,6 +9,7 @@ const CarCard = ({ car, searchText }) => {
   const removeCarFromFavorites = useStore(
     (state) => state.removeCarFromFavorites
   );
+  const addCarToGarage = useStore((state) => state.addCarToGarage);
 
   const highlightMatch = (text) => {
     if (!searchText) {
@@ -33,6 +34,10 @@ const CarCard = ({ car, searchText }) => {
       : addCarToFavorites(car);
   };
 
+  const handleAddCarToGarage = (car) => {
+    addCarToGarage(car);
+  };
+
   return (
     <div className="col-xl-3 col-lg-4 col-md-6">
       <div className={styles.carCard}>
@@ -42,7 +47,9 @@ const CarCard = ({ car, searchText }) => {
           className="img-fluid"
         />
         <div
-          className={`${styles.like} ${favoriteCars.includes(car) ? styles.active : ""}`}
+          className={`${styles.like} ${
+            favoriteCars.includes(car) ? styles.active : ""
+          }`}
           title="Add to favorite"
           onClick={() => {
             handleFavorite(car);
@@ -93,9 +100,17 @@ const CarCard = ({ car, searchText }) => {
             </p>
           </div>
         </div>
-        <a href="#" className={styles.addToGarage} title="Add to garage">
+        <div className="d-flex justify-content-center mb-2">
+          <hr className="w-50  text-light" />
+        </div>
+        <div className={styles.carPrice}>{car.price.toFixed(0)}$ / hour</div>
+        <div
+          className={styles.addToGarage}
+          onClick={() => handleAddCarToGarage(car)}
+          title="Add to garage"
+        >
           <GrAddCircle className="fs-4" />
-        </a>
+        </div>
       </div>
     </div>
   );

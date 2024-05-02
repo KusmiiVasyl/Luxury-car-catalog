@@ -1,0 +1,23 @@
+.garageCarTable {
+  margin-top: 50px;
+  color: #ffffff;
+  border-radius: 20px;
+  background: var(--bgColor);
+  box-shadow: var(--boxShadow);
+}
+
+.garageCarTable thead tr {
+  font-size: 1.3rem;
+}
+
+.garageCarTable thead tr th {
+  background: transparent;
+  color: #ffffff;
+  text-align: center;
+  align-content: center;
+  line-height: normal;
+}
+
+.garageCarTable thead tr th .textPrice {
+  font-size: 0.9rem;
+}

@@ -2,7 +2,7 @@ import { create } from "zustand";
 import axios from "axios";
 import { URL } from "./constants/index";
 
-export const useStore = create((set) => ({
+export const useStore = create((set, get) => ({
   activeHeaderSlideIcon: false,
   handleToggleActiveHeaderSlideIcon: () =>
     set((state) => ({
@@ -19,6 +19,7 @@ export const useStore = create((set) => ({
   },
   carsInGarage: [],
   addCarToGarage: (car) => {
+    if (get().carsInGarage.includes(car)) return;
     set((state) => ({ carsInGarage: [...state.carsInGarage, car] }));
   },
 }));

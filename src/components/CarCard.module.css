@@ -48,11 +48,27 @@
   background: var(--secondary);
   border-radius: 20px 0 20px 0;
   color: var(--bgColor);
+  cursor: pointer;
+}
+
+.carCard .addToGarage:hover {
+  background: var(--bgColor);
+  color: var(--secondary);
 }
 
 .carCard .like.active {
   color: #ec1d1d;
 }
+
+.carCard .carPrice{
+  position: absolute;
+  right: 50%;
+  transform: translateX(calc(50% - 20px));
+  bottom: 5px;
+  color: #6cfb70;
+  font-size: 1.1rem;
+  font-style: italic;
+} 
 /* #endregion */
 
 /* #region Car details */
