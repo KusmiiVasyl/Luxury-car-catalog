@@ -9,13 +9,15 @@ const MyFavorites = () => {
     <section id="myFavorites" className="myFavorites">
       <div className="fluid-container">
         <div className="row mt-3 mb-5">
-          <h1>My Favorite Cars</h1>
+          <h2>My Favorite Cars</h2>
         </div>
         <div className="row">
           {favoriteCars.length > 0 ? (
             favoriteCars.map((car) => <CarCard key={car.id} car={car} />)
           ) : (
-            <h2>No favorite cars</h2>
+            <div>
+              <p className="noDataText">No favorite cars</p>
+            </div>
           )}
         </div>
       </div>

@@ -79,3 +79,15 @@ section {
   overflow: hidden;
   overflow-y: visible;
 }
+
+div .noDataText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 1.4rem;
+  letter-spacing: 1.5px;
+  text-transform: capitalize;
+  color: #808080;
+}
