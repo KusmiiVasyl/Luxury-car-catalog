@@ -22,6 +22,11 @@ export const useStore = create((set, get) => ({
     if (get().carsInGarage.includes(car)) return;
     set((state) => ({ carsInGarage: [...state.carsInGarage, car] }));
   },
+  removeCarFromGarage: (id) => {
+    set((state) => ({
+      carsInGarage: state.carsInGarage.filter((car) => car.id !== id),
+    }));
+  },
 }));
 
 // get data from api
