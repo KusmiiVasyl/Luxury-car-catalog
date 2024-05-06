@@ -3,6 +3,7 @@ import { useGetData } from "../store";
 import styles from "./Home.module.css";
 import { FaArrowRightLong } from "react-icons/fa6";
 import CarCard from "../components/CarCard";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   const getData = useGetData();
@@ -16,15 +17,15 @@ const Home = () => {
       </div>
       <div className="row mt-2 mb-4">
         <div className="col-lg-6">
-          <h2 className={styles.sectionTitle}>Rent cars on promotion</h2>
+          <h2 className={styles.sectionTitle}>Rent cars</h2>
         </div>
         <div className="col-lg-6 d-flex justify-content-end align-items-center">
-          <a href="#" className={styles.viewMore}>
+          <NavLink to={"/brands"} className={styles.viewMore}>
             <div>View more cars</div>
             <div className="ms-2">
               <FaArrowRightLong />
             </div>
-          </a>
+          </NavLink>
         </div>
       </div>
       <div className="row">
