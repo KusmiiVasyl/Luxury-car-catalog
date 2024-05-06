@@ -4,6 +4,7 @@
   border-radius: 20px;
   background: var(--bgColor);
   box-shadow: var(--boxShadow);
+  overflow: hidden;
 }
 
 .garageCarTable thead tr {

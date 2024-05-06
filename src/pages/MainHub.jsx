@@ -4,6 +4,7 @@ import styles from "./MainHub.module.css";
 import { useStore, useGetData } from "../store";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
+import NotFound from "./NotFound";
 
 const MainHub = () => {
   const active = useStore((state) => state.activeHeaderSlideIcon);
@@ -19,7 +20,8 @@ const MainHub = () => {
       <div className={styles.banner + (active ? " " + styles.active : "")}>
         <Header />
         {getData.cars && getData.cars.length > 0 && <Outlet />}
-        {/* TODO Loading & Error page */}
+        {getData.loading && <div className={styles.loading}>Loading...</div>}
+        {getData.error && <NotFound />}
       </div>
     </div>
   );

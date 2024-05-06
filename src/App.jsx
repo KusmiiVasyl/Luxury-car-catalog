@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import MyFavorites from "./pages/MyFavorites";
 import MyGarage from "./pages/MyGarage";
 import Brands from "./pages/Brands";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
             <Route path="brands" element={<Brands />} />
             <Route path="favorites" element={<MyFavorites />} />
             <Route path="garage" element={<MyGarage />} />
-            {/* <Route path="*" element={<NotFound />} />  TODO */}
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </div>
