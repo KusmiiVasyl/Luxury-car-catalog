@@ -2,7 +2,7 @@ import { BsSliders } from "react-icons/bs";
 import { MdFavorite } from "react-icons/md";
 import { PiGarageFill } from "react-icons/pi";
 import styles from "./Hearder.module.css";
-import userImg from "../images/myFoto.PNG";
+import userImg from "../../images/myFoto.PNG";
 import { useStore } from "../../store";
 
 const Header = () => {

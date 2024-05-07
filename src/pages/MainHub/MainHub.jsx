@@ -1,5 +1,5 @@
 import SideMenu from "../../components/SideMenu/SideMenu";
-import Header from "./Header";
+import Header from "../Header/Header";
 import styles from "./MainHub.module.css";
 import { useStore, useGetData } from "../../store";
 import { Outlet } from "react-router-dom";

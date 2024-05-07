@@ -2,12 +2,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MainHub from "./pages/MainHub";
-import Home from "./pages/Home";
-import MyFavorites from "./pages/MyFavorites";
-import MyGarage from "./pages/MyGarage";
-import Brands from "./pages/Brands";
-import NotFound from "./pages/NotFound";
+import MainHub from "./pages/MainHub/MainHub";
+import Home from "./pages/Home/Home";
+import MyFavorites from "./pages/MyFavorites/MyFavorites";
+import MyGarage from "./pages/MyGarage/MyGarage";
+import Brands from "./pages/Brands/Brands";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (

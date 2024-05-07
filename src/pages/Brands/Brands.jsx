@@ -1,7 +1,7 @@
 import styles from "./Brands.module.css";
 import { useGetData } from "../../store";
 import { useState } from "react";
-import CarCard from "../../components/CarCard";
+import CarCard from "../../components/CarCard/CarCard";
 
 const Brands = () => {
   const carsfilterOptions = useGetData((state) => state.filterOptions);
