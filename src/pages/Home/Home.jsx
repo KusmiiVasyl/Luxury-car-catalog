@@ -1,8 +1,8 @@
-import CarSwiper from "../components/CarSwiper";
-import { useGetData } from "../store";
+import CarSwiper from "../../components/CarSwiper/CarSwiper";
+import { useGetData } from "../../store";
 import styles from "./Home.module.css";
 import { FaArrowRightLong } from "react-icons/fa6";
-import CarCard from "../components/CarCard";
+import CarCard from "../../components/CarCard/CarCard";
 import { NavLink } from "react-router-dom";
 
 const Home = () => {

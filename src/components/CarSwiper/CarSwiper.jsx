@@ -4,7 +4,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "./CarSwiper.css";
 import { EffectCoverflow, Navigation, Autoplay } from "swiper/modules";
-import CarSlider from "./CarSlider";
+import CarSlider from "../CarSlider/CarSlider";
 import { useState } from "react";
 
 const CarSwiper = ({ cars }) => {

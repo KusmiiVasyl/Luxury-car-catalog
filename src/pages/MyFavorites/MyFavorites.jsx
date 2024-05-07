@@ -1,6 +1,6 @@
-import { useStore } from "../store";
+import { useStore } from "../../store";
 import styles from "./MyFavorites.module.css";
-import CarCard from "../components/CarCard";
+import CarCard from "../../components/CarCard/CarCard";
 
 const MyFavorites = () => {
   const favoriteCars = useStore((state) => state.favoriteCars);

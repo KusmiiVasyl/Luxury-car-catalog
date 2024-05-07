@@ -1,7 +1,7 @@
 import styles from "./CarCard.module.css";
 import { FaHeart } from "react-icons/fa6";
 import { GrAddCircle } from "react-icons/gr";
-import { useStore } from "../store";
+import { useStore } from "../../store";
 
 const CarCard = ({ car, searchText }) => {
   const favoriteCars = useStore((state) => state.favoriteCars);

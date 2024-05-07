@@ -3,7 +3,7 @@ import { BsFacebook } from "react-icons/bs";
 import { IoLogoYoutube } from "react-icons/io5";
 import { FaTwitter } from "react-icons/fa";
 import { MdShare } from "react-icons/md";
-import { useStore } from "../store";
+import { useStore } from "../../store";
 
 const Social = () => {
   const active = useStore((state) => state.activeHeaderSlideIcon);

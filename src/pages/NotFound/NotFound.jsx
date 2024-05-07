@@ -1,4 +1,4 @@
-import { useGetData } from "../store";
+import { useGetData } from "../../store";
 import styles from "./NotFound.module.css";
 import { BiSolidError } from "react-icons/bi";
 

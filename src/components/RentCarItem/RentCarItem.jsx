@@ -1,4 +1,4 @@
-import { useStore } from "../store";
+import { useStore } from "../../store";
 import styles from "./RentCarItem.module.css";
 import { GiCarKey } from "react-icons/gi";
 

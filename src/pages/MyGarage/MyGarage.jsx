@@ -1,5 +1,5 @@
-import RentCarItem from "../components/RentCarItem";
-import { useStore } from "../store";
+import RentCarItem from "../../components/RentCarItem/RentCarItem";
+import { useStore } from "../../store";
 import styles from "./MyGarage.module.css";
 
 const MyGarage = () => {

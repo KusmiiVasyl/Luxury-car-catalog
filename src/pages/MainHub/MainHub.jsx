@@ -1,10 +1,10 @@
-import SideMenu from "../components/SideMenu";
+import SideMenu from "../../components/SideMenu/SideMenu";
 import Header from "./Header";
 import styles from "./MainHub.module.css";
-import { useStore, useGetData } from "../store";
+import { useStore, useGetData } from "../../store";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
-import NotFound from "./NotFound";
+import NotFound from "../NotFound/NotFound";
 
 const MainHub = () => {
   const active = useStore((state) => state.activeHeaderSlideIcon);
