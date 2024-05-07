@@ -27,6 +27,13 @@ export const useStore = create((set, get) => ({
       carsInGarage: state.carsInGarage.filter((car) => car.id !== id),
     }));
   },
+  isActiveModal: false,
+  carForModal: null,
+  handleToggleActiveModal: (car) =>
+    set((state) => ({
+      carForModal: car,
+      isActiveModal: !state.isActiveModal,
+    })),
 }));
 
 // get data from api

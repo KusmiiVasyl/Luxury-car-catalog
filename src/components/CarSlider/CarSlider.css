@@ -67,6 +67,12 @@
   background: var(--secondary);
   padding: 3px 20px;
   border-radius: 10px;
+  transition: 0.3s;
+}
+
+.content .btns .btnCarDetail:hover {
+  background: var(--bgColor);
+  color: var(--secondary);
 }
 
 .content .btns .btnCarTrailer .play,
@@ -80,6 +86,18 @@
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.content .btns .btnCarTrailer .play:hover,
+.content .btns .btnCarTrailer .pause:hover {
+  color: var(--secondary);
+}
+
+.content .btns .btnCarTrailer .play,
+.content .btns .btnCarTrailer .pause,
+.content .btns .btnCarDetail {
+  cursor: pointer;
 }
 
 /* #region logic swipe button play/pause */

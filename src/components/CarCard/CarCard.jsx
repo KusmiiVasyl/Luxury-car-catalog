@@ -10,6 +10,7 @@ const CarCard = ({ car, searchText }) => {
     (state) => state.removeCarFromFavorites
   );
   const addCarToGarage = useStore((state) => state.addCarToGarage);
+  const toggleActiveModal = useStore((state) => state.handleToggleActiveModal);
 
   const highlightMatch = (text) => {
     if (!searchText) {
@@ -39,7 +40,7 @@ const CarCard = ({ car, searchText }) => {
   };
 
   return (
-    <div className="col-xl-3 col-lg-4 col-md-6">
+    <div className="col-xl-3 col-lg-4 col-md-6" onDoubleClick={() => toggleActiveModal(car)}>
       <div className={styles.carCard}>
         <img
           src={car.img}

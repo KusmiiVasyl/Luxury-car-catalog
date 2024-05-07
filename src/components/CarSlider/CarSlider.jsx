@@ -1,9 +1,11 @@
 // import icon
 import { FaPause, FaPlay } from "react-icons/fa6";
-
 import "./CarSlider.css";
+import { useStore } from "../../store";
 
 const CarSlider = ({ car, active, toggleVideo }) => {
+  const toggleActiveModal = useStore((state) => state.handleToggleActiveModal);
+
   return (
     <div className="carSlider">
       <img src={car.img} alt={car.name} />
@@ -21,11 +23,10 @@ const CarSlider = ({ car, active, toggleVideo }) => {
         <h2>{car.brand}</h2>
         <h3>{car.model}</h3>
         <div className="btns">
-          <a href="#" className="btnCarDetail">
+          <div className="btnCarDetail" onClick={() => toggleActiveModal(car)}>
             More Details
-          </a>
-          <a
-            href="#"
+          </div>
+          <div
             className={`btnCarTrailer ${active ? "active" : ""}`}
             onClick={toggleVideo}
           >
@@ -35,7 +36,7 @@ const CarSlider = ({ car, active, toggleVideo }) => {
             <span className="play">
               <FaPlay />
             </span>
-          </a>
+          </div>
         </div>
       </div>
     </div>

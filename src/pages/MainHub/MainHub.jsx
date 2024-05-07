@@ -5,6 +5,7 @@ import { useStore, useGetData } from "../../store";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import NotFound from "../NotFound/NotFound";
+import Modal from "../../components/Modal/Modal";
 
 const MainHub = () => {
   const active = useStore((state) => state.activeHeaderSlideIcon);
@@ -22,6 +23,7 @@ const MainHub = () => {
         {getData.cars && getData.cars.length > 0 && <Outlet />}
         {getData.loading && <div className={styles.loading}>Loading...</div>}
         {getData.error && <NotFound />}
+        {getData.success && <Modal />}
       </div>
     </div>
   );
