@@ -76,7 +76,7 @@ const CarCard = ({ car, searchText }) => {
               Power: <span>{car.power}</span>
             </p>
             <p>
-              Top speed: <span>{car.max_peed}</span>
+              Top speed: <span>{car.max_speed}</span>
             </p>
             <p>
               Acceleration 0-100: <span>{car.acceleration}</span>

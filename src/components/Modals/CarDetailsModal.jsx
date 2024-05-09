@@ -1,6 +1,7 @@
 import { VscChromeClose } from "react-icons/vsc";
 import styles from "./CarDetailsModal.module.css";
 import { useStore } from "../../store";
+import CarDetails from "../CarDetails/CarDetails";
 
 const CarDetailsModal = () => {
   const car = useStore((state) => state.carForModal);
@@ -12,7 +13,9 @@ const CarDetailsModal = () => {
         <div className={styles.close}>
           <VscChromeClose onClick={toggleActiveModal} />
         </div>
-        <div className={styles.content}>{car?.brand}</div>
+        <div className={styles.content}>
+          <CarDetails car={car} />
+        </div>
       </div>
     </div>
   );

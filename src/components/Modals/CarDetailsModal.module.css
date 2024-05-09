@@ -5,6 +5,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,10 +13,15 @@
   transition: 0.3s;
 }
 
+.modal :is(.close, .content) {
+  width: min(600px, 100% - 50px);
+  margin-inline: auto;
+}
+
 .modal .close {
   display: flex;
   justify-content: end;
-  color: #ffffff;
+  color: #217591;
   font-size: 2rem;
   padding: 0 0 10px 0;
   cursor: pointer;
@@ -23,13 +29,9 @@
 }
 
 .modal .close:hover {
-  color: var(--secondary);
+  color: #83e0ff;
 }
 
 .modal .content {
-  width: 90vw;
-  max-width: 600px;
-  height: 80vh;
-  background-color: bisque;
-  border-radius: 15px;
+  height: 85vh;
 }
