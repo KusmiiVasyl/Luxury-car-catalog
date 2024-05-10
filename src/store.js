@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { URL } from "./constants/index";
 
 export const useStore = create((set, get) => ({
@@ -20,7 +21,9 @@ export const useStore = create((set, get) => ({
   },
   carsInGarage: [],
   addCarToGarage: (car) => {
-    if (get().carsInGarage.includes(car)) return;
+    if (get().carsInGarage.includes(car)) {
+      toast.info(`This ${(car.brand).toUpperCase()} is already in garage`);
+      return;}
     set((state) => ({ carsInGarage: [...state.carsInGarage, car] }));
   },
   removeCarFromGarage: (id) => {

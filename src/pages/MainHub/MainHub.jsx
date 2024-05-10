@@ -6,6 +6,7 @@ import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import NotFound from "../NotFound/NotFound";
 import CarDetailsModal from "../../components/Modals/CarDetailsModal";
+import { ToastContainer } from "react-toastify";
 
 const MainHub = () => {
   const active = useStore((state) => state.activeHeaderSlideIcon);
@@ -26,6 +27,12 @@ const MainHub = () => {
         {getData.error && <NotFound />}
         {isActiveModal && <CarDetailsModal />}
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        limit={4}
+        theme="dark"
+      />
     </div>
   );
 };
