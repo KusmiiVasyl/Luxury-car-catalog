@@ -8,6 +8,7 @@ import { useStore } from "../../store";
 const CarDetails = ({ car }) => {
   const favoriteCars = useStore((state) => state.favoriteCars);
   const handleFavoriteCars = useStore((state) => state.handleFavoriteCars);
+  const addCarToGarage = useStore((state) => state.addCarToGarage);
 
   return (
     <div className={styles.carDetails}>
@@ -29,10 +30,14 @@ const CarDetails = ({ car }) => {
         >
           <FaHeart />
         </div>
-        <div className={styles.rent}>
+        <div className={styles.rent} title="Rent car">
           <GiCarKey />
         </div>
-        <div className={styles.addToGarage}>
+        <div
+          className={styles.addToGarage}
+          onClick={() => addCarToGarage(car)}
+          title="Add to garage"
+        >
           <GrAddCircle />
         </div>
       </div>

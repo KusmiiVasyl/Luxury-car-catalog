@@ -26,10 +26,6 @@ const CarCard = ({ car, searchText }) => {
     });
   };
 
-  const handleAddCarToGarage = (car) => {
-    addCarToGarage(car);
-  };
-
   return (
     <div
       className="col-xl-3 col-lg-4 col-md-6"
@@ -101,7 +97,7 @@ const CarCard = ({ car, searchText }) => {
         <div className={styles.carPrice}>{car.price.toFixed(0)}$ / hour</div>
         <div
           className={styles.addToGarage}
-          onClick={() => handleAddCarToGarage(car)}
+          onClick={() => addCarToGarage(car)}
           title="Add to garage"
         >
           <GrAddCircle className="fs-4" />
