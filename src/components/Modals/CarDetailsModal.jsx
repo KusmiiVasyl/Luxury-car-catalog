@@ -11,7 +11,9 @@ const CarDetailsModal = () => {
     <div className={styles.modal}>
       <div className="d-flex flex-column">
         <div className={styles.close}>
-          <VscChromeClose onClick={toggleActiveModal} />
+          <span>
+            <VscChromeClose onClick={toggleActiveModal} />
+          </span>
         </div>
         <div className={styles.content}>
           <CarDetails car={car} />

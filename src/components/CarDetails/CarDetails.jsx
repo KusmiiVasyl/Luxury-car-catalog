@@ -7,16 +7,7 @@ import { useStore } from "../../store";
 
 const CarDetails = ({ car }) => {
   const favoriteCars = useStore((state) => state.favoriteCars);
-  const addCarToFavorites = useStore((state) => state.addCarToFavorites);
-  const removeCarFromFavorites = useStore(
-    (state) => state.removeCarFromFavorites
-  );
-
-  const handleFavoriteCar = () => {
-    favoriteCars.includes(car)
-      ? removeCarFromFavorites(car.id)
-      : addCarToFavorites(car);
-  };
+  const handleFavoriteCars = useStore((state) => state.handleFavoriteCars);
 
   return (
     <div className={styles.carDetails}>
@@ -34,7 +25,7 @@ const CarDetails = ({ car }) => {
             favoriteCars.includes(car) ? styles.activeFavorite : ""
           }`}
           title="Add to favorite"
-          onClick={handleFavoriteCar}
+          onClick={() => handleFavoriteCars(car)}
         >
           <FaHeart />
         </div>

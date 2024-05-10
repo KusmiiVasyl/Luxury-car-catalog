@@ -21,15 +21,18 @@
 .modal .close {
   display: flex;
   justify-content: end;
-  color: #217591;
   font-size: 2rem;
   padding: 0 0 10px 0;
+}
+
+.modal .close span {
+  color: var(--secondary);
   cursor: pointer;
   transition: 0.3s;
 }
 
-.modal .close:hover {
-  color: #83e0ff;
+.modal .close span:hover {
+  color: #c4eaf7;
 }
 
 .modal .content {

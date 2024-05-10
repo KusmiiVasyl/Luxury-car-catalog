@@ -9,13 +9,14 @@ export const useStore = create((set, get) => ({
       activeHeaderSlideIcon: !state.activeHeaderSlideIcon,
     })),
   favoriteCars: [],
-  addCarToFavorites: (car) => {
-    set((state) => ({ favoriteCars: [...state.favoriteCars, car] }));
-  },
-  removeCarFromFavorites: (id) => {
-    set((state) => ({
-      favoriteCars: state.favoriteCars.filter((car) => car.id !== id),
-    }));
+  handleFavoriteCars: (car) => {
+    if (get().favoriteCars.includes(car)) {
+      set((state) => ({
+        favoriteCars: state.favoriteCars.filter((c) => c.id !== car.id),
+      }));
+    } else {
+      set((state) => ({ favoriteCars: [...state.favoriteCars, car] }));
+    }
   },
   carsInGarage: [],
   addCarToGarage: (car) => {

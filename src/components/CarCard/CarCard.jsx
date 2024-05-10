@@ -5,10 +5,7 @@ import { useStore } from "../../store";
 
 const CarCard = ({ car, searchText }) => {
   const favoriteCars = useStore((state) => state.favoriteCars);
-  const addCarToFavorites = useStore((state) => state.addCarToFavorites);
-  const removeCarFromFavorites = useStore(
-    (state) => state.removeCarFromFavorites
-  );
+  const handleFavoriteCars = useStore((state) => state.handleFavoriteCars);
   const addCarToGarage = useStore((state) => state.addCarToGarage);
   const toggleActiveModal = useStore((state) => state.handleToggleActiveModal);
 
@@ -29,18 +26,15 @@ const CarCard = ({ car, searchText }) => {
     });
   };
 
-  const handleFavorite = (car) => {
-    favoriteCars.includes(car)
-      ? removeCarFromFavorites(car.id)
-      : addCarToFavorites(car);
-  };
-
   const handleAddCarToGarage = (car) => {
     addCarToGarage(car);
   };
 
   return (
-    <div className="col-xl-3 col-lg-4 col-md-6" onDoubleClick={() => toggleActiveModal(car)}>
+    <div
+      className="col-xl-3 col-lg-4 col-md-6"
+      onDoubleClick={() => toggleActiveModal(car)}
+    >
       <div className={styles.carCard}>
         <img
           src={car.img}
@@ -53,7 +47,7 @@ const CarCard = ({ car, searchText }) => {
           }`}
           title="Add to favorite"
           onClick={() => {
-            handleFavorite(car);
+            handleFavoriteCars(car);
           }}
         >
           <FaHeart />
