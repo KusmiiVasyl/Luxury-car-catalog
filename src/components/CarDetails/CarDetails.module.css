@@ -10,6 +10,8 @@
     inset 5px 5px 15px rgba(0, 0, 0, 0.35);
   font-style: italic;
   overflow: auto;
+  scrollbar-color: var(--secondary) var(--bgColor);
+  scrollbar-width: thin;
 }
 
 .carDetails :is(.brand, .model) {
@@ -86,6 +88,10 @@
 
 .carDetails .btnActions .favorite {
   color: #ffffff;
+}
+
+.carDetails .btnActions .favorite.activeFavorite {
+  color: #fc3c3c;
 }
 
 .carDetails .btnActions .rent {

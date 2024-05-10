@@ -3,8 +3,21 @@ import { FaHeart } from "react-icons/fa6";
 import { GrAddCircle } from "react-icons/gr";
 import { GiCarKey } from "react-icons/gi";
 import styles from "./CarDetails.module.css";
+import { useStore } from "../../store";
 
 const CarDetails = ({ car }) => {
+  const favoriteCars = useStore((state) => state.favoriteCars);
+  const addCarToFavorites = useStore((state) => state.addCarToFavorites);
+  const removeCarFromFavorites = useStore(
+    (state) => state.removeCarFromFavorites
+  );
+
+  const handleFavoriteCar = () => {
+    favoriteCars.includes(car)
+      ? removeCarFromFavorites(car.id)
+      : addCarToFavorites(car);
+  };
+
   return (
     <div className={styles.carDetails}>
       <div className={styles.brand}>{car.brand}</div>
@@ -16,7 +29,13 @@ const CarDetails = ({ car }) => {
         <span>Rent price: </span> {car.price}$/hour
       </div>
       <div className={styles.btnActions}>
-        <div className={styles.favorite}>
+        <div
+          className={`${styles.favorite} ${
+            favoriteCars.includes(car) ? styles.activeFavorite : ""
+          }`}
+          title="Add to favorite"
+          onClick={handleFavoriteCar}
+        >
           <FaHeart />
         </div>
         <div className={styles.rent}>
