@@ -41,41 +41,6 @@
   align-items: center;
 }
 
-.userItems .avatar {
-  width: 150px;
-  height: 50px;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  border-radius: 10px;
-  box-shadow: var(--boxShadow);
-}
-
-.userItems .avatar img {
-  display: flex;
-  align-items: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-}
-
-.userItems .avatar a {
-  color: #ffffff;
-  font-size: 1.8rem;
-}
-
-.userItems .avatar .user {
-  display: flex;
-  flex-direction: column;
-}
-
-.userItems .avatar .user span {
-  font-size: 0.7rem;
-  color: #ffffff;
-}
-
-.userItems .avatar .user a {
+.userItems .registration {
   text-decoration: none;
-  font-size: 0.7rem;
 }

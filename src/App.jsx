@@ -8,6 +8,7 @@ import MyFavorites from "./pages/MyFavorites/MyFavorites";
 import MyGarage from "./pages/MyGarage/MyGarage";
 import Brands from "./pages/Brands/Brands";
 import NotFound from "./pages/NotFound/NotFound";
+import Registration from "./pages/Registration/Registration";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="brands" element={<Brands />} />
             <Route path="favorites" element={<MyFavorites />} />
             <Route path="garage" element={<MyGarage />} />
+            <Route path="registration" element={<Registration />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

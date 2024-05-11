@@ -22,8 +22,9 @@ export const useStore = create((set, get) => ({
   carsInGarage: [],
   addCarToGarage: (car) => {
     if (get().carsInGarage.includes(car)) {
-      toast.info(`This ${(car.brand).toUpperCase()} is already in garage`);
-      return;}
+      toast.info(`This ${car.brand.toUpperCase()} is already in garage`);
+      return;
+    }
     set((state) => ({ carsInGarage: [...state.carsInGarage, car] }));
   },
   removeCarFromGarage: (id) => {
@@ -38,6 +39,7 @@ export const useStore = create((set, get) => ({
       carForModal: car,
       isActiveModal: !state.isActiveModal,
     })),
+  isUserRegister: false,
 }));
 
 // get data from api
