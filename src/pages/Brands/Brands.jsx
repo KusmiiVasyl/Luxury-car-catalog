@@ -46,6 +46,7 @@ const Brands = () => {
               className={styles.filters}
               onChange={handleFilterChange}
               onClick={() => setSearchText("")}
+              value={filterOption}
             >
               {carsfilterOptions.map((option) => (
                 <option key={option.id} value={option.value}>
@@ -63,6 +64,7 @@ const Brands = () => {
                 value={searchText}
                 placeholder="Search"
                 onChange={handleSearch}
+                onClick={() => setFilterOption(carsfilterOptions[0].value)}
               />
             </div>
           </div>

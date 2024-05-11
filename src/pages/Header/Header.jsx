@@ -4,6 +4,7 @@ import { PiGarageFill } from "react-icons/pi";
 import styles from "./Hearder.module.css";
 import userImg from "../../images/myFoto.PNG";
 import { useStore } from "../../store";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const toggleActive = useStore(
@@ -18,14 +19,14 @@ const Header = () => {
         <BsSliders />
       </div>
       <div className={styles.userItems}>
-        <div className={styles.icon}>
+        <NavLink to={"/favorites"}  className={styles.icon}>
           <MdFavorite />
           <span className={styles.favorite}>{countFavoriteCars}</span>
-        </div>
-        <div className={styles.icon}>
+        </NavLink>
+        <NavLink to={"/garage"} className={styles.icon}>
           <PiGarageFill />
           <span className={styles.garage}>{countCarsInGarage}</span>
-        </div>
+        </NavLink>
         <div className={styles.avatar}>
           <div>
             <img src={userImg} alt="User Image" />
