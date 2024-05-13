@@ -19,8 +19,6 @@
   border-radius: 5px;
 }
 
-
-
 /* #region Like $ Add to garage */
 .carCard :where(.like, .addToGarage) {
   position: absolute;
