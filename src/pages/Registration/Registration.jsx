@@ -1,4 +1,5 @@
 import { TbArrowBigRightLineFilled } from "react-icons/tb";
+import { IoMdAdd } from "react-icons/io";
 import styles from "./Registration.module.css";
 import { mobileCode } from "../../data/mobileCode";
 
@@ -67,7 +68,13 @@ const Registration = () => {
             required
           />
         </div>
-        <div>{/* TODO Add photo input */}</div>
+        <div className={styles.addPhoto}>
+          <p>Add photo</p>
+          <label>
+            <IoMdAdd />
+            <input type="file" />
+          </label>
+        </div>
         <div className={styles.submit}>
           <button type="submit">
             <TbArrowBigRightLineFilled />
