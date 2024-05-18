@@ -17,7 +17,7 @@ const MyGarage = () => {
           </div>
         ) : (
           <div className="row">
-            <div className="table-responsive">
+            <div className={`table-responsive ${styles.tableContainer}`}>
               <table
                 className={`table table-borderless align-middle ${styles.garageCarTable}`}
               >

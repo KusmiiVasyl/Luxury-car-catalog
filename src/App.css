@@ -47,7 +47,6 @@ body {
   font-family: "Roboto", sans-serif;
   width: 100%;
   min-height: 100vh;
-  overflow: hidden;
 }
 
 header {
@@ -63,10 +62,6 @@ header {
   background: transparent;
 }
 
-section::-webkit-scrollbar {
-  display: none;
-}
-
 section {
   position: absolute;
   width: 100%;
@@ -76,8 +71,9 @@ section {
   z-index: 1000;
   top: 100px;
   bottom: 0;
-  overflow: hidden;
-  overflow-y: visible;
+  overflow: auto;
+  scrollbar-color: var(--secondary) var(--bgColor);
+  scrollbar-width: thin;
 }
 
 div .noDataText {

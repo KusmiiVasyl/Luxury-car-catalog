@@ -1,3 +1,7 @@
+.tableContainer {
+  scrollbar-width: thin;
+}
+
 .garageCarTable {
   margin-top: 50px;
   color: #ffffff;

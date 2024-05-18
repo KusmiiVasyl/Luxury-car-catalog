@@ -34,19 +34,17 @@
   border: none;
 }
 
-.formContainer .form input {
+.formContainer .form :is(input, select) :focus {
+  border: none !important;
 }
 
-.formContainer .form select {
-}
-
+/* #region Submit button */
 .formContainer .form .submit {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-/* #region Submit button */
 .formContainer .form .submit button {
   display: flex;
   flex-direction: row;
@@ -80,42 +78,15 @@
 }
 /* #endregion */
 
-/* #region Add photo */
-.formContainer .form input[type="file"] {
-  display: none;
-}
-
-.formContainer .form .addPhoto {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  gap: 20px;
-  margin-right: 20px;
-}
-
-.formContainer .form .addPhoto p {
-  text-align: center;
-}
-
-.formContainer .form .addPhoto label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70px;
-  height: 70px;
-  border: 2px solid #ffffff;
-  border-radius: 5px;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.formContainer .form .addPhoto label :first-child {
-  font-size: 30px;
+/* #region DevTool */
+.formContainer :is(header, section) {
+  position: relative;
 }
 /* #endregion */
 
-/* #region DevTool */
-.formContainer :is(header, section){
-  position: relative;
+/* #region Error */
+.formContainer .form div p {
+  color: red;
+  font-size: 0.8rem;
 }
 /* #endregion */

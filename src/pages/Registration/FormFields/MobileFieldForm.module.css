@@ -1,0 +1,11 @@
+.phoneNumberContainer {
+  display: flex;
+}
+
+.phoneNumberContainer select {
+  width: fit-content;
+}
+
+.phoneNumberContainer input {
+  width: 100%;
+}
