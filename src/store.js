@@ -33,12 +33,30 @@ export const useStore = create((set, get) => ({
     }));
   },
   isActiveModal: false,
-  carForModal: null,
-  handleToggleActiveModal: (car) =>
-    set((state) => ({
-      carForModal: car,
-      isActiveModal: !state.isActiveModal,
-    })),
+  carForDetail: null,
+  carForRent: null,
+  chooseModalContent: { carDetail: false, rentCar: false },
+  modalContent: { CarDetail: "CarDetail", CarRent: "CarRent" },
+  handleToggleActiveModal: (car, content) => {
+    if (!content) {
+      set(() => ({ isActiveModal: false }));
+      return;
+    }
+    if (get().modalContent.CarDetail === content) {
+      set(() => ({
+        carForDetail: car,
+        chooseModalContent: { carDetail: true, rentCar: false },
+        isActiveModal: true,
+      }));
+    }
+    if (get().modalContent.CarRent === content) {
+      set(() => ({
+        carForRent: car,
+        chooseModalContent: { carDetail: false, rentCar: true },
+        isActiveModal: true,
+      }));
+    }
+  },
   isUserRegister: false,
   user: {
     firstName: "",

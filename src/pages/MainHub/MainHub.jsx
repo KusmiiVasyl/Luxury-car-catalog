@@ -5,7 +5,7 @@ import { useStore, useGetData } from "../../store";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import NotFound from "../NotFound/NotFound";
-import CarDetailsModal from "../../components/Modals/CarDetailsModal";
+import CarModal from "../../components/Modals/CarModal";
 import { ToastContainer, Zoom } from "react-toastify";
 
 const MainHub = () => {
@@ -25,17 +25,12 @@ const MainHub = () => {
         {getData.cars && getData.cars.length > 0 && <Outlet />}
         {getData.loading && <div className={styles.loading}>Loading...</div>}
         {getData.error && <NotFound />}
-        {isActiveModal && <CarDetailsModal />}
+        {isActiveModal && <CarModal />}
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        limit={4}
-        theme="dark"
-      />
       <ToastContainer
         position="top-center"
         autoClose={3000}
+        limit={4}
         hideProgressBar
         newestOnTop={false}
         closeOnClick

@@ -5,6 +5,7 @@ import { useStore } from "../../store";
 
 const CarSlider = ({ car, active, toggleVideo }) => {
   const toggleActiveModal = useStore((state) => state.handleToggleActiveModal);
+  const modalContent = useStore((state) => state.modalContent);
 
   return (
     <div className="carSlider">
@@ -23,7 +24,10 @@ const CarSlider = ({ car, active, toggleVideo }) => {
         <h2>{car.brand}</h2>
         <h3>{car.model}</h3>
         <div className="btns">
-          <div className="btnCarDetail" onClick={() => toggleActiveModal(car)}>
+          <div
+            className="btnCarDetail"
+            onClick={() => toggleActiveModal(car, modalContent.CarDetail)}
+          >
             More Details
           </div>
           <div

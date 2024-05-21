@@ -9,7 +9,7 @@ const CarDetails = ({ car }) => {
   const favoriteCars = useStore((state) => state.favoriteCars);
   const handleFavoriteCars = useStore((state) => state.handleFavoriteCars);
   const addCarToGarage = useStore((state) => state.addCarToGarage);
-
+  
   return (
     <div className={styles.carDetails}>
       <div className={styles.brand}>{car.brand}</div>

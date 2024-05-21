@@ -1,10 +1,12 @@
 import { VscChromeClose } from "react-icons/vsc";
-import styles from "./CarDetailsModal.module.css";
+import styles from "./CarModal.module.css";
 import { useStore } from "../../store";
 import CarDetails from "../CarDetails/CarDetails";
 
-const CarDetailsModal = () => {
-  const car = useStore((state) => state.carForModal);
+const CarModal = () => {
+  const carForDetail = useStore((state) => state.carForDetail);
+  const carForRent = useStore((state) => state.carForRent);
+  const chooseModalContent = useStore((state) => state.chooseModalContent);
   const toggleActiveModal = useStore((state) => state.handleToggleActiveModal);
 
   return (
@@ -16,11 +18,12 @@ const CarDetailsModal = () => {
           </span>
         </div>
         <div className={styles.content}>
-          <CarDetails car={car} />
+          {chooseModalContent.carDetail && <CarDetails car={carForDetail} />}
+          {chooseModalContent.rentCar && <h4>Rent car</h4>}
         </div>
       </div>
     </div>
   );
 };
 
-export default CarDetailsModal;
+export default CarModal;
