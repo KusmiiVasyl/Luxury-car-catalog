@@ -1,12 +1,16 @@
 import styles from "./EmailFieldForm.module.css";
+import { useStore } from "../../../store";
 
 const EmailFieldForm = ({ register, errors }) => {
+const email = useStore((state) => state.user.email);
+
   return (
     <div>
       <input
         type="email"
         className="form-control"
         id="email"
+        defaultValue={email}
         placeholder="Email address"
         {...register("email", {
           pattern: {

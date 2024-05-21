@@ -40,6 +40,20 @@ export const useStore = create((set, get) => ({
       isActiveModal: !state.isActiveModal,
     })),
   isUserRegister: false,
+  user: {
+    firstName: "",
+    lasttName: "",
+    codeMobile: "",
+    mobile: "",
+    email: "",
+    age: null,
+    drivingExperience: null,
+    photo: "",
+  },
+  registerUser: (user) => {
+    set(() => ({ user: user, isUserRegister: true }));
+    if (get().isUserRegister) toast.success("User info saved successfully");
+  },
 }));
 
 // get data from api

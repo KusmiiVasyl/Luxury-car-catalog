@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import NotFound from "../NotFound/NotFound";
 import CarDetailsModal from "../../components/Modals/CarDetailsModal";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, Zoom } from "react-toastify";
 
 const MainHub = () => {
   const active = useStore((state) => state.activeHeaderSlideIcon);
@@ -32,6 +32,19 @@ const MainHub = () => {
         autoClose={2000}
         limit={4}
         theme="dark"
+      />
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Zoom}
       />
     </div>
   );

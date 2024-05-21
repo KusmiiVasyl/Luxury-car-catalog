@@ -1,6 +1,9 @@
 import styles from "./DrivingExperience.module.css";
+import { useStore } from "../../../store";
 
 const DrivingExperience = ({ register, errors }) => {
+const experience = useStore((state) => state.user.drivingExperience);
+
   return (
     <div>
       <input
@@ -8,6 +11,7 @@ const DrivingExperience = ({ register, errors }) => {
         className="form-control"
         id="drivingExperience"
         placeholder="Driving experience"
+        defaultValue={experience}
         min="0"
         max="100"
         {...register("drivingExperience", {

@@ -8,18 +8,33 @@ import MobileFieldForm from "./FormFields/MobileFieldForm";
 import EmailFieldForm from "./FormFields/EmailFieldForm";
 import AgeFieldForm from "./FormFields/AgeFieldForm";
 import DrivingExperience from "./FormFields/DrivingExperience";
+import { useStore } from "../../store";
+import {useNavigate} from 'react-router-dom';
 
 const Registration = () => {
+  const navigate = useNavigate();
+  const registerUser = useStore((state) => state.registerUser);
   const {
     register,
     watch,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const userPhoto = useStore((state) => state.user.photo);
 
   const onSubmit = (data) => {
-    console.log(data);
-    console.log(data.photo[0]);
+    const user = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      codeMobile: data.codeMobile,
+      mobile: data.mobile,
+      email: data.email,
+      age: data.age,
+      drivingExperience: data.drivingExperience,
+      photo: data.photo[0] ? URL.createObjectURL(data.photo[0]) : userPhoto,
+    };
+    registerUser(user);
+    navigate('/')
   };
 
   return (
@@ -30,18 +45,18 @@ const Registration = () => {
           onSubmit={handleSubmit(onSubmit)}
           noValidate
         >
-          <h3>Register form</h3>
-          <FirstNameFieldForm register={register} errors={errors} />
-          <LastNameFieldForm register={register} errors={errors} />
-          <MobileFieldForm register={register} errors={errors} />
-          <EmailFieldForm register={register} errors={errors} />
-          <AgeFieldForm register={register} errors={errors} />
-          <DrivingExperience register={register} errors={errors} />
-          <AddPhotoFieldForm register={register} watch={watch} />
+          <h3>User info</h3>
+          <FirstNameFieldForm {...{ register, errors }} />
+          <LastNameFieldForm {...{ register, errors }} />
+          <MobileFieldForm {...{ register, errors }} />
+          <EmailFieldForm {...{ register, errors }} />
+          <AgeFieldForm {...{ register, errors }} />
+          <DrivingExperience {...{ register, errors }} />
+          <AddPhotoFieldForm {...{ register, watch }} />
           <div className={styles.submit}>
             <button type="submit">
               <TbArrowBigRightLineFilled />
-              <span>Register</span>
+              <span>Save</span>
             </button>
           </div>
         </form>

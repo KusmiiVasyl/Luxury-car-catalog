@@ -11,17 +11,18 @@
   box-shadow: var(--boxShadow);
 }
 
+.avatar .userIcon {
+  display: flex;
+  color: #ffffff;
+  font-size: 1.8rem;
+}
+
 .avatar img {
   display: flex;
   align-items: center;
   width: 35px;
   height: 35px;
   border-radius: 50%;
-}
-
-.avatar a {
-  color: #ffffff;
-  font-size: 1.8rem;
 }
 
 .avatar .user {
@@ -38,10 +39,6 @@
 /* #region Register */
 .register {
   color: #ffffff;
-}
-
-.register .icon :first-child {
-  margin-bottom: ;
 }
 
 .register .text p {

@@ -1,14 +1,18 @@
 import styles from "./MobileFieldForm.module.css";
 import { mobileCode } from "../../../data/mobileCode";
+import { useStore } from "../../../store";
 
 const MobileFieldForm = ({ register, errors }) => {
+  const mobile = useStore((state) => state.user.mobile);
+  const codeMobile = useStore((state) => state.user.codeMobile);
+
   return (
     <div className="input-group">
       <div className={styles.phoneNumberContainer}>
         <select
           className="form-select rounded-end-0"
           id="codeMobile"
-          defaultValue={"US +1"}
+          defaultValue={codeMobile ? codeMobile : "US +1"}
           {...register("codeMobile")}
         >
           {mobileCode.map((item, index) => (
@@ -18,17 +22,18 @@ const MobileFieldForm = ({ register, errors }) => {
           ))}
         </select>
         <input
-          type="text"
-          id="phoneNumber"
+          type="number"
+          id="mobile"
           className="form-control rounded-start-0"
+          defaultValue={mobile}
           placeholder="Mobile"
-          {...register("phoneNumber", {
+          {...register("mobile", {
             required: { value: true, message: "Mobile is required" },
             maxLength: { value: 10, message: "Max length is 10" },
           })}
         />
       </div>
-      <p>{errors.phoneNumber?.message}</p>
+      <p>{errors.mobile?.message}</p>
     </div>
   );
 };

@@ -1,6 +1,9 @@
 import styles from "./AgeFieldForm.module.css";
+import { useStore } from "../../../store";
 
 const AgeFieldForm = ({ register, errors }) => {
+const age = useStore((state) => state.user.age);
+
   return (
     <div>
       <input
@@ -8,6 +11,7 @@ const AgeFieldForm = ({ register, errors }) => {
         className="form-control"
         id="age"
         placeholder="Your age"
+        defaultValue={age}
         min="18"
         max="100"
         required
