@@ -2,6 +2,7 @@ import { VscChromeClose } from "react-icons/vsc";
 import styles from "./CarModal.module.css";
 import { useStore } from "../../store";
 import CarDetails from "../CarDetails/CarDetails";
+import RentCarForm from "../RentCarForm/RentCarForm";
 
 const CarModal = () => {
   const carForDetail = useStore((state) => state.carForDetail);
@@ -19,7 +20,7 @@ const CarModal = () => {
         </div>
         <div className={styles.content}>
           {chooseModalContent.carDetail && <CarDetails car={carForDetail} />}
-          {chooseModalContent.rentCar && <h4>Rent car</h4>}
+          {chooseModalContent.rentCar && <RentCarForm car={carForRent} />}
         </div>
       </div>
     </div>

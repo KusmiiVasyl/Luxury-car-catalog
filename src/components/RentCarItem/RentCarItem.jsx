@@ -4,6 +4,10 @@ import { GiCarKey } from "react-icons/gi";
 
 const RentCarItem = ({ car, index }) => {
   const removeCarFromGarage = useStore((state) => state.removeCarFromGarage);
+  const handleToggleActiveModal = useStore(
+    (state) => state.handleToggleActiveModal
+  );
+  const modalContent = useStore((state) => state.modalContent);
 
   const handleRemoveCar = (id) => {
     removeCarFromGarage(id);
@@ -20,7 +24,13 @@ const RentCarItem = ({ car, index }) => {
       <td>{car.year}</td>
       <td>{car.color}</td>
       <td>${car.price.toFixed(0)}</td>
-      <td className={styles.rentIcon} title="Rent car">
+      <td
+        className={styles.rentIcon}
+        title="Rent car"
+        onClick={() => {
+          handleToggleActiveModal(car, modalContent.CarRent);
+        }}
+      >
         <GiCarKey />
       </td>
       <td

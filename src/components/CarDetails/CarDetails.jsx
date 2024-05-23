@@ -9,7 +9,11 @@ const CarDetails = ({ car }) => {
   const favoriteCars = useStore((state) => state.favoriteCars);
   const handleFavoriteCars = useStore((state) => state.handleFavoriteCars);
   const addCarToGarage = useStore((state) => state.addCarToGarage);
-  
+  const handleToggleActiveModal = useStore(
+    (state) => state.handleToggleActiveModal
+  );
+  const modalContent = useStore((state) => state.modalContent);
+
   return (
     <div className={styles.carDetails}>
       <div className={styles.brand}>{car.brand}</div>
@@ -30,7 +34,13 @@ const CarDetails = ({ car }) => {
         >
           <FaHeart />
         </div>
-        <div className={styles.rent} title="Rent car">
+        <div
+          className={styles.rent}
+          title="Rent car"
+          onClick={() => {
+            handleToggleActiveModal(car, modalContent.CarRent);
+          }}
+        >
           <GiCarKey />
         </div>
         <div
