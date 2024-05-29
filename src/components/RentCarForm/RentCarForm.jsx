@@ -1,11 +1,14 @@
 import styles from "./RentCarForm.module.css";
+import RentDateRange from "./RentDateRange";
 
 const RentCarForm = ({ car }) => {
   return (
     <div className={styles.mainContainer}>
       <h3>Request rent form</h3>
       <div className={`d-flex flex-column flex-sm-row ${styles.carContainer}`}>
-        <div className={`d-flex flex-column w-100 ${styles.infoContainer}`}>
+        <div
+          className={`d-flex flex-column w-100 text-nowrap ${styles.infoContainer}`}
+        >
           <h6>Your rent car:</h6>
           <p>
             Brand: <span>{car.brand}</span>{" "}
@@ -27,9 +30,11 @@ const RentCarForm = ({ car }) => {
           <img src={car.img} alt="" />
         </div>
       </div>
+      <div className="d-flex justify-content-center w-100">
+        <hr className="w-50  text-light" />
+      </div>
       <div className={styles.formContainer}>
-        <form action="">
-        </form>
+        <RentDateRange carPrice={car.price} />
       </div>
     </div>
   );

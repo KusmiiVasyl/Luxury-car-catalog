@@ -15,6 +15,7 @@
 .carContainer {
   align-items: center;
   margin: 20px 0;
+  gap: 10px;
 }
 
 .carContainer .infoContainer {
@@ -36,8 +37,6 @@
   font-size: 1.1rem;
 }
 
-.carContainer .imgContainer {
-}
 .carContainer .imgContainer img {
   width: 100%;
   height: auto;
@@ -46,7 +45,6 @@
 }
 /* #endregion */
 
-/* #region Rent Car Form */
 .formContainer {
+  width: 100%;
 }
-/* #endregion */
