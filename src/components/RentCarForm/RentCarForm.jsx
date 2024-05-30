@@ -34,7 +34,7 @@ const RentCarForm = ({ car }) => {
         <hr className="w-50  text-light" />
       </div>
       <div className={styles.formContainer}>
-        <RentDateRange carPrice={car.price} />
+        <RentDateRange car={car} />
       </div>
     </div>
   );

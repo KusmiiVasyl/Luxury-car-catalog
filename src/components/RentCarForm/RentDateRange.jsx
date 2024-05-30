@@ -1,15 +1,18 @@
 import DatePicker from "react-datepicker";
+import emailjs from "@emailjs/browser";
 import { GrUpdate } from "react-icons/gr";
 import styles from "./RentDateRange.module.css";
 import { useState } from "react";
+import { useStore } from "../../store";
 
-const RentDateRange = ({ carPrice }) => {
+const RentDateRange = ({ car }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndtDate] = useState(null);
   const [deliveryPlace, setDeliveryPlace] = useState("");
   const [returnPlace, setReturnPlace] = useState("");
   const [note, setNote] = useState("");
   const totalRentHours = calculateTotalRentHours(startDate, endDate);
+  const user = useStore((state) => state.user);
 
   const handleStartDateChange = (date) => {
     setStartDate(auditStartDate(date));
@@ -28,12 +31,46 @@ const RentDateRange = ({ carPrice }) => {
     setNote("");
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const sendEmailData = {
+      ...user,
+      carId: car.id,
+      carBrand: car.brand,
+      carModel: car.model,
+      carYear: car.year,
+      carColor: car.color,
+      carPrice: car.price,
+      startDate: `${startDate.getHours()}:00 ${startDate.toLocaleDateString()}`,
+      endDate: `${endDate.getHours()}:00 ${endDate.toLocaleDateString()}`,
+      totalRentHours,
+      deliveryPlace,
+      returnPlace,
+      note,
+    };
+
+    emailjs
+      .send(
+        "service_nvtpucx",
+        "template_43ns8s3",
+        sendEmailData,
+        "gUEG3qLSEX-6YkxED"
+      )
+      .then((result) => {
+        console.log(result.text);
+      })
+      .catch((error) => {
+        console.log(error.text);
+      });
+  };
+
   return (
     <div className={styles.formContainer}>
       <div className={styles.textRangePeriodContainer}>
         <p>Choose the rental time period and delivery, return places.</p>
       </div>
-      <form action="">
+      <form onSubmit={handleSubmit} noValidate>
         <div className="d-flex flex-sm-row flex-column w-100 start">
           <div>
             <DatePicker
@@ -92,7 +129,7 @@ const RentDateRange = ({ carPrice }) => {
           </div>
         </div>
         <div className={styles.btnClearDataContainer}>
-          <div onClick={handleRestAllData} title="Reset all data" >
+          <div onClick={handleRestAllData} title="Reset all data">
             <GrUpdate />
           </div>
         </div>
@@ -105,7 +142,7 @@ const RentDateRange = ({ carPrice }) => {
           </p>
           <p>
             Total amount to be paid:
-            <span> {totalRentHours * carPrice}$</span>
+            <span> {totalRentHours * car.price}$</span>
           </p>
         </div>
         <div className={styles.btnSendContainer}>
