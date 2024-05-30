@@ -7,10 +7,14 @@ import { useEffect } from "react";
 import NotFound from "../NotFound/NotFound";
 import CarModal from "../../components/Modals/CarModal";
 import { ToastContainer, Zoom } from "react-toastify";
+import NotificationModal from "../../components/Modals/NotificationModal";
 
 const MainHub = () => {
   const active = useStore((state) => state.activeHeaderSlideIcon);
   const isActiveModal = useStore((state) => state.isActiveModal);
+  const isActiveNotificationModal = useStore(
+    (state) => state.isActiveNotificationModal
+  );
   const getData = useGetData();
 
   useEffect(() => {
@@ -26,6 +30,7 @@ const MainHub = () => {
         {getData.loading && <div className={styles.loading}>Loading...</div>}
         {getData.error && <NotFound />}
         {isActiveModal && <CarModal />}
+        {isActiveNotificationModal && <NotificationModal />}
       </div>
       <ToastContainer
         position="top-center"

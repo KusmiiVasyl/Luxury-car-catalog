@@ -57,6 +57,22 @@ export const useStore = create((set, get) => ({
       }));
     }
   },
+  isActiveNotificationModal: false,
+  checkIsUserRegister: () => {
+    if (get().isUserRegister) {
+      set(() => ({ isActiveNotificationModal: false }));
+      return false;
+    } else {
+      set(() => ({
+        isActiveNotificationModal: true,
+        isActiveModal: false,
+      }));
+      return true;
+    }
+  },
+  resetActiveNotificationModal: () => {
+    set(() => ({ isActiveNotificationModal: false }));
+  },
   isUserRegister: false,
   user: {
     firstName: "",

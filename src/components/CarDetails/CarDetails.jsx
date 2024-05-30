@@ -13,6 +13,12 @@ const CarDetails = ({ car }) => {
     (state) => state.handleToggleActiveModal
   );
   const modalContent = useStore((state) => state.modalContent);
+  const checkIsUserRegister = useStore((state) => state.checkIsUserRegister);
+
+  const handleRentCar = () => {
+    if (checkIsUserRegister()) return;
+    handleToggleActiveModal(car, modalContent.CarRent);
+  };
 
   return (
     <div className={styles.carDetails}>
@@ -34,13 +40,7 @@ const CarDetails = ({ car }) => {
         >
           <FaHeart />
         </div>
-        <div
-          className={styles.rent}
-          title="Rent car"
-          onClick={() => {
-            handleToggleActiveModal(car, modalContent.CarRent);
-          }}
-        >
+        <div className={styles.rent} title="Rent car" onClick={handleRentCar}>
           <GiCarKey />
         </div>
         <div

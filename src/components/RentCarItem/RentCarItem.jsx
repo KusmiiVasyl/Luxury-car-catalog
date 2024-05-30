@@ -8,9 +8,15 @@ const RentCarItem = ({ car, index }) => {
     (state) => state.handleToggleActiveModal
   );
   const modalContent = useStore((state) => state.modalContent);
+  const checkIsUserRegister = useStore((state) => state.checkIsUserRegister);
 
   const handleRemoveCar = (id) => {
     removeCarFromGarage(id);
+  };
+
+  const handleRentCar = () => {
+    if (checkIsUserRegister()) return;
+    handleToggleActiveModal(car, modalContent.CarRent);
   };
 
   return (
@@ -24,13 +30,7 @@ const RentCarItem = ({ car, index }) => {
       <td>{car.year}</td>
       <td>{car.color}</td>
       <td>${car.price.toFixed(0)}</td>
-      <td
-        className={styles.rentIcon}
-        title="Rent car"
-        onClick={() => {
-          handleToggleActiveModal(car, modalContent.CarRent);
-        }}
-      >
+      <td className={styles.rentIcon} title="Rent car" onClick={handleRentCar}>
         <GiCarKey />
       </td>
       <td
