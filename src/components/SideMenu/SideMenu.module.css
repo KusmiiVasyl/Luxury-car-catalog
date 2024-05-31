@@ -90,7 +90,7 @@
     width: 7%;
     align-items: center;
   }
-  
+
   .logo span,
   .nav a span:nth-child(2) {
     display: none;

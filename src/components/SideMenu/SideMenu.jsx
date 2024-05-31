@@ -4,6 +4,7 @@ import Social from "../Social/Social";
 import { useStore } from "../../store";
 import NavItemMenu from "../NavItemMenu/NavItemMenu";
 import { navItemsList } from "../../data/navItemsList";
+import { NavLink } from "react-router-dom";
 
 const SideMenu = () => {
   const isExpandSideMenu = useStore((state) => state.activeHeaderSlideIcon);
@@ -14,10 +15,10 @@ const SideMenu = () => {
         styles.sideMenuBlock + (isExpandSideMenu ? " " + styles.active : "")
       }
     >
-      <a href="" className={styles.logo}>
+      <NavLink to="/" className={styles.logo}>
         <IoCarSport />
         <span>Luxury car</span>
-      </a>
+      </NavLink>
       <nav className={styles.nav}>
         {navItemsList.map((item) => (
           <NavItemMenu key={item.id} item={item} />
