@@ -2,7 +2,7 @@ import SideMenu from "../../components/SideMenu/SideMenu";
 import Header from "../Header/Header";
 import styles from "./MainHub.module.css";
 import { useStore, useGetData } from "../../store";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import NotFound from "../NotFound/NotFound";
 import CarModal from "../../components/Modals/CarModal";
@@ -10,6 +10,7 @@ import { ToastContainer, Zoom } from "react-toastify";
 import NotificationModal from "../../components/Modals/NotificationModal";
 
 const MainHub = () => {
+  const navigate = useNavigate();
   const active = useStore((state) => state.activeHeaderSlideIcon);
   const isActiveModal = useStore((state) => state.isActiveModal);
   const isActiveNotificationModal = useStore(
@@ -19,6 +20,15 @@ const MainHub = () => {
 
   useEffect(() => {
     getData.getCars();
+
+    const handleBeforeUnload = (event) => {
+      event.preventDefault(); 
+      navigate("/");
+    };  
+    window.addEventListener('load', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('load', handleBeforeUnload);
+    };
   }, []);
 
   return (
