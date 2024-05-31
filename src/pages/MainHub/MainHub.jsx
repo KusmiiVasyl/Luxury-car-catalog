@@ -22,31 +22,41 @@ const MainHub = () => {
   }, []);
 
   return (
-    <div className={styles.mainBlock}>
-      <SideMenu active={active} />
-      <div className={styles.banner + (active ? " " + styles.active : "")}>
-        <Header />
-        {getData.cars && getData.cars.length > 0 && <Outlet />}
-        {getData.loading && <div className={styles.loading}>Loading...</div>}
-        {getData.error && <NotFound />}
-        {isActiveModal && <CarModal />}
-        {isActiveNotificationModal && <NotificationModal />}
+    <>
+      <div className={styles.mainBlock}>
+        <SideMenu active={active} />
+        <div className={styles.banner + (active ? " " + styles.active : "")}>
+          <Header />
+          {getData.cars && getData.cars.length > 0 && <Outlet />}
+          {getData.loading && <div className={styles.loading}>Loading...</div>}
+          {getData.error && <NotFound />}
+          {isActiveModal && <CarModal />}
+          {isActiveNotificationModal && <NotificationModal />}
+        </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          limit={4}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          transition={Zoom}
+        />
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        limit={4}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-        transition={Zoom}
-      />
-    </div>
+      <div className={styles.infoBlock}>
+        <hr />
+        <p>
+          <strong>Attention:</strong><br/> This website is designed for viewing on larger screens.<br/> Please
+          use a device with a bigger screen for the best experience.
+        </p>
+        <hr />
+      </div>
+    </>
   );
 };
 

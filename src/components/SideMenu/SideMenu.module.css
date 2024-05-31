@@ -84,3 +84,15 @@
   font-size: 1.5rem;
 }
 /* #endregion */
+
+@media screen and (max-width: 1245px) {
+  .sideMenuBlock {
+    width: 7%;
+    align-items: center;
+  }
+  
+  .logo span,
+  .nav a span:nth-child(2) {
+    display: none;
+  }
+}
