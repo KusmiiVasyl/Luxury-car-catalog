@@ -1,5 +1,7 @@
 import DatePicker from "react-datepicker";
 import emailjs from "@emailjs/browser";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import { ToastContainer, Bounce, toast } from "react-toastify";
 import { GrUpdate } from "react-icons/gr";
 import styles from "./RentDateRange.module.css";
 import { useState } from "react";
@@ -11,6 +13,7 @@ const RentDateRange = ({ car }) => {
   const [deliveryPlace, setDeliveryPlace] = useState("");
   const [returnPlace, setReturnPlace] = useState("");
   const [note, setNote] = useState("");
+  const [loading, setLoading] = useState(false);
   const totalRentHours = calculateTotalRentHours(startDate, endDate);
   const user = useStore((state) => state.user);
 
@@ -23,7 +26,7 @@ const RentDateRange = ({ car }) => {
     setEndtDate(auditEndDate(startDate, date));
   };
 
-  const handleRestAllData = () => {
+  const handleResetAllData = () => {
     setStartDate(null);
     setEndtDate(null);
     setDeliveryPlace("");
@@ -31,8 +34,9 @@ const RentDateRange = ({ car }) => {
     setNote("");
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const sendEmailData = {
       ...user,
@@ -59,9 +63,14 @@ const RentDateRange = ({ car }) => {
       )
       .then((result) => {
         console.log(result.text);
+        handleResetAllData();
+        toast.success("We have received your request. We will contact you shortly.");
       })
       .catch((error) => {
         console.log(error.text);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -129,7 +138,7 @@ const RentDateRange = ({ car }) => {
           </div>
         </div>
         <div className={styles.btnClearDataContainer}>
-          <div onClick={handleRestAllData} title="Reset all data">
+          <div onClick={handleResetAllData} title="Reset all data">
             <GrUpdate />
           </div>
         </div>
@@ -146,13 +155,37 @@ const RentDateRange = ({ car }) => {
           </p>
         </div>
         <div className={styles.btnSendContainer}>
-          <input
+          <button
             type="submit"
-            disabled={!startDate || !endDate || !deliveryPlace || !returnPlace}
-            value="send a rental request"
-          />
+            disabled={
+              !startDate ||
+              !endDate ||
+              !deliveryPlace ||
+              !returnPlace ||
+              loading
+            }
+            value=""
+          >
+            {loading ? (
+              <PropagateLoader color="#36a6d6" size={10} />
+            ) : (
+              <span>send a rental request</span>
+            )}
+          </button>
         </div>
       </form>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={false}
+        limit={1}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="colored"
+        transition={Bounce}
+      />
     </div>
   );
 };
@@ -172,14 +205,16 @@ const calculateEndMinTime = (startDate, endDate) => {
   const newDate = new Date(startDate);
   newDate.setHours(new Date(startDate).getHours() + 1, 0, 0, 0);
 
-  if (
-    startDate &&
-    endDate &&
-    startDate.getFullYear() === endDate.getFullYear() &&
-    startDate.getMonth() === endDate.getMonth() &&
-    startDate.getDate() < endDate.getDate()
-  )
-    newDate.setHours(0, 0, 0, 0);
+  if (startDate && endDate) {
+    if (
+      startDate.getFullYear() <= endDate.getFullYear() &&
+      (startDate.getMonth() < endDate.getMonth() ||
+        (startDate.getMonth() === endDate.getMonth() &&
+          startDate.getDate() < endDate.getDate()))
+    ) {
+      newDate.setHours(0, 0, 0, 0);
+    }
+  }
 
   return newDate;
 };
@@ -211,7 +246,7 @@ const auditEndDate = (startDate, endDate) => {
     startDate.getDate() === endDate.getDate()
   ) {
     const newDate = new Date(startDate);
-    return new Date(newDate.setHours(endDate.getHours(), 0, 0, 0));
+    return new Date(newDate.setHours(newDate.getHours() + 1, 0, 0, 0));
   }
   return endDate;
 };
